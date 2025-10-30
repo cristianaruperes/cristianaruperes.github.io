@@ -1,4 +1,3 @@
-// src/components/ScrollReveal.tsx
 import React, { useEffect, useRef, useState } from "react";
 
 interface ScrollRevealProps {
