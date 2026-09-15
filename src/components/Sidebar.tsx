@@ -56,8 +56,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       <aside className={`fixed left-0 top-0 h-screen w-64 bg-white border-r border-slate-200 flex flex-col z-40 transition-transform duration-300 ${
         isOpen ? 'translate-x-0' : '-translate-x-64'
       }`}>
-        <div className="p-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 mx-auto mb-4 flex items-center justify-center text-xl font-bold text-white shadow-lg animate-fadeInScale">
+        <div className="px-8 pt-8 pb-5">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 mx-auto mb-3 flex items-center justify-center text-xl font-bold text-white shadow-lg animate-fadeInScale">
             CR
           </div>
           <h2 className="text-center font-bold text-xl text-slate-900 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
@@ -71,7 +71,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           </p>
         </div>
 
-        <nav className="flex-1 px-6 mt-4 overflow-y-auto">
+        <nav className="flex-1 px-6 overflow-y-auto">
           <ul className="space-y-1">
             {navItems.map((item, index) => (
               <li key={item.id} className="animate-fadeInLeft" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>

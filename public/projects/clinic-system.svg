@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Clinic management system placeholder">
+  <defs>
+    <linearGradient id="clBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#clBg)"/>
+  <g opacity="0.12" fill="#ffffff">
+    <circle cx="700" cy="90" r="110"/>
+    <circle cx="80" cy="390" r="120"/>
+  </g>
+  <rect x="286" y="124" width="228" height="212" rx="22" fill="#ffffff" fill-opacity="0.95"/>
+  <g fill="#047857">
+    <rect x="374" y="176" width="52" height="132" rx="12"/>
+    <rect x="334" y="216" width="132" height="52" rx="12"/>
+  </g>
+  <g fill="none" stroke="#6ee7b7" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 366h84l28-44 34 76 30-58 26 26h248"/>
+  </g>
+  <text x="400" y="80" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="26" font-weight="600" fill="#ffffff" fill-opacity="0.92">Clinic Management</text>
+</svg>

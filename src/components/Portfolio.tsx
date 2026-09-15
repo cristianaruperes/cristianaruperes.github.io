@@ -6,7 +6,8 @@ interface PortfolioItem {
   desc: string;
   link: string;
   tech: string[];
-  height: string;
+  /** Swap for a real screenshot: drop the file in public/projects/ and update this path. */
+  image: string;
 }
 
 const projects: PortfolioItem[] = [
@@ -15,42 +16,42 @@ const projects: PortfolioItem[] = [
     desc: "Deep learning research on lung nodule segmentation and measurement in CT images, advancing automated medical image analysis.",
     link: "https://github.com/cristianaruperes/Lung-Nodule-Analysis",
     tech: ["Python", "Jupyter", "Deep Learning"],
-    height: "h-96"
+    image: "/projects/lung-nodule.svg"
   },
   {
     title: "LINE Chatbot — YZU University",
     desc: "Conversational assistant answering questions about university programs, campus facilities and the admission process.",
     link: "https://github.com/cristianaruperes/LINE-Chatbot-YZU-University",
     tech: ["Python", "LINE API", "NLP"],
-    height: "h-80"
+    image: "/projects/chatbot-yzu.svg"
   },
   {
     title: "LINE Chatbot — Bali Tourism",
     desc: "Tourism chatbot giving fast, accurate answers that help tourists and locals navigate and explore the city.",
     link: "https://github.com/cristianaruperes/LINE-Chatbot-Bali-Tourism",
     tech: ["Python", "LINE API", "Chatbot"],
-    height: "h-72"
+    image: "/projects/chatbot-bali.svg"
   },
   {
     title: "School Management System",
     desc: "Information system for schools handling student and academic records, built on Laravel with a Bootstrap frontend.",
     link: "https://github.com/cristianaruperes/School-Management-System-Laravel",
     tech: ["Laravel", "PHP", "Bootstrap"],
-    height: "h-80"
+    image: "/projects/school-system.svg"
   },
   {
     title: "Clinic Management System",
     desc: "Information system for a general clinic covering patient records and visits, built on Laravel with a Bootstrap frontend.",
     link: "https://github.com/cristianaruperes/clinic-management-system",
     tech: ["Laravel", "PHP", "MySQL"],
-    height: "h-72"
+    image: "/projects/clinic-system.svg"
   },
   {
     title: "Personal Portfolio",
     desc: "This site — a responsive single-page portfolio built with React 19, TypeScript and Tailwind, deployed to GitHub Pages.",
     link: "https://github.com/cristianaruperes/cristianaruperes.github.io",
     tech: ["React", "TypeScript", "Tailwind"],
-    height: "h-64"
+    image: "/projects/portfolio-site.svg"
   }
 ];
 
@@ -66,8 +67,18 @@ export const Portfolio: React.FC = () => {
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {projects.map((project, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
-              <div className={`break-inside-avoid bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden group ${project.height}`}>
-                <div className="h-full p-6 flex flex-col justify-between bg-gradient-to-br from-blue-50 to-slate-50 group-hover:from-blue-100 group-hover:to-slate-100 transition-all duration-300">
+              <div className="break-inside-avoid bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden group">
+                <div className="aspect-video overflow-hidden bg-slate-100">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    loading="lazy"
+                    width={800}
+                    height={450}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 flex flex-col justify-between bg-gradient-to-br from-blue-50 to-slate-50 group-hover:from-blue-100 group-hover:to-slate-100 transition-all duration-300">
                   <div>
                     <h3 className="font-bold text-xl text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                       {project.title}

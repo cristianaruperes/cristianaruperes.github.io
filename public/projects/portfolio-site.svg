@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Portfolio website placeholder">
+  <defs>
+    <linearGradient id="pfBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#pfBg)"/>
+  <rect x="150" y="110" width="500" height="250" rx="18" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+  <rect x="150" y="110" width="500" height="42" rx="18" fill="#ffffff" fill-opacity="0.16"/>
+  <g fill="#ffffff" fill-opacity="0.55">
+    <circle cx="180" cy="131" r="7"/>
+    <circle cx="204" cy="131" r="7"/>
+    <circle cx="228" cy="131" r="7"/>
+  </g>
+  <rect x="172" y="176" width="112" height="162" rx="12" fill="#60a5fa" fill-opacity="0.35"/>
+  <g fill="#ffffff" fill-opacity="0.6">
+    <rect x="196" y="200" width="64" height="9" rx="4.5"/>
+    <rect x="196" y="222" width="46" height="9" rx="4.5"/>
+    <rect x="196" y="244" width="58" height="9" rx="4.5"/>
+  </g>
+  <g fill="none" stroke="#93c5fd" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M370 226l-34 32 34 32"/>
+    <path d="M498 226l34 32-34 32"/>
+    <path d="M452 208l-36 100"/>
+  </g>
+  <text x="400" y="404" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="26" font-weight="600" fill="#ffffff" fill-opacity="0.9">This Website</text>
+</svg>
