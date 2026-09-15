@@ -22,6 +22,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
     { id: "experience", label: "Experience" },
     { id: "education", label: "Education" },
     { id: "portfolio", label: "Portfolio" },
+    { id: "publications", label: "Publications" },
   ];
 
   return (
@@ -60,14 +61,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             CR
           </div>
           <h2 className="text-center font-bold text-xl text-slate-900 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-            Cristian Aruperes
+            Cristian Daniel Aruperes
           </h2>
           <p className="text-center text-sm text-slate-500 mt-2 animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
             IT Enthusiast
           </p>
+          <p className="text-center text-xs text-slate-400 mt-1 animate-fadeInUp" style={{ animationDelay: '0.35s' }}>
+            Taoyuan City, Taiwan
+          </p>
         </div>
 
-        <nav className="flex-1 px-6 mt-4">
+        <nav className="flex-1 px-6 mt-4 overflow-y-auto">
           <ul className="space-y-1">
             {navItems.map((item, index) => (
               <li key={item.id} className="animate-fadeInLeft" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
@@ -100,6 +104,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               className="text-slate-400 hover:text-blue-600 transition-all duration-300 hover:scale-110 text-sm font-medium"
             >
               GitHub
+            </a>
+            <span className="text-slate-300">•</span>
+            <a
+              href="https://www.linkedin.com/in/cristian-aruperes/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-blue-600 transition-all duration-300 hover:scale-110 text-sm font-medium"
+            >
+              LinkedIn
             </a>
             <span className="text-slate-300">•</span>
             <a

@@ -5,6 +5,7 @@ import { About } from "./components/About";
 import { Experience } from "./components/Experience";
 import { Education } from "./components/Education";
 import { Portfolio } from "./components/Portfolio";
+import { Publications } from "./components/Publications";
 import { Footer } from "./components/Footer";
 
 const App: React.FC = () => {
@@ -34,6 +35,7 @@ const App: React.FC = () => {
         <Experience />
         <Education />
         <Portfolio />
+        <Publications />
         <Footer />
       </main>
     </div>
