@@ -1,54 +1,42 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
+import { useLanguage } from "../i18n/context";
 
-interface PortfolioItem {
-  title: string;
-  desc: string;
+interface ProjectMeta {
   link: string;
   tech: string[];
   /** Swap for a real screenshot: drop the file in public/projects/ and update this path. */
   image: string;
 }
 
-const projects: PortfolioItem[] = [
+/** Links, stacks and images stay untranslated — they line up with t.portfolio.items by index. */
+const projectMeta: ProjectMeta[] = [
   {
-    title: "Lung Nodule Analysis",
-    desc: "Deep learning research on lung nodule segmentation and measurement in CT images, advancing automated medical image analysis.",
     link: "https://github.com/cristianaruperes/Lung-Nodule-Analysis",
     tech: ["Python", "Jupyter", "Deep Learning"],
     image: "/projects/lung-nodule.svg"
   },
   {
-    title: "LINE Chatbot — YZU University",
-    desc: "Conversational assistant answering questions about university programs, campus facilities and the admission process.",
     link: "https://github.com/cristianaruperes/LINE-Chatbot-YZU-University",
     tech: ["Python", "LINE API", "NLP"],
     image: "/projects/chatbot-yzu.svg"
   },
   {
-    title: "LINE Chatbot — Bali Tourism",
-    desc: "Tourism chatbot giving fast, accurate answers that help tourists and locals navigate and explore the city.",
     link: "https://github.com/cristianaruperes/LINE-Chatbot-Bali-Tourism",
     tech: ["Python", "LINE API", "Chatbot"],
     image: "/projects/chatbot-bali.svg"
   },
   {
-    title: "School Management System",
-    desc: "Information system for schools handling student and academic records, built on Laravel with a Bootstrap frontend.",
     link: "https://github.com/cristianaruperes/School-Management-System-Laravel",
     tech: ["Laravel", "PHP", "Bootstrap"],
     image: "/projects/school-system.svg"
   },
   {
-    title: "Clinic Management System",
-    desc: "Information system for a general clinic covering patient records and visits, built on Laravel with a Bootstrap frontend.",
     link: "https://github.com/cristianaruperes/clinic-management-system",
     tech: ["Laravel", "PHP", "MySQL"],
     image: "/projects/clinic-system.svg"
   },
   {
-    title: "Personal Portfolio",
-    desc: "This site — a responsive single-page portfolio built with React 19, TypeScript and Tailwind, deployed to GitHub Pages.",
     link: "https://github.com/cristianaruperes/cristianaruperes.github.io",
     tech: ["React", "TypeScript", "Tailwind"],
     image: "/projects/portfolio-site.svg"
@@ -56,11 +44,17 @@ const projects: PortfolioItem[] = [
 ];
 
 export const Portfolio: React.FC = () => {
+  const { t } = useLanguage();
+  const projects = t.portfolio.items.map((item, index) => ({
+    ...item,
+    ...projectMeta[index]
+  }));
+
   return (
     <section id="portfolio" className="min-h-screen bg-slate-50 py-20 px-8">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">Portfolio</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-8">{t.portfolio.heading}</h2>
         </ScrollReveal>
 
         {/* Masonry Grid */}
@@ -71,7 +65,7 @@ export const Portfolio: React.FC = () => {
                 <div className="aspect-video overflow-hidden bg-slate-100">
                   <img
                     src={project.image}
-                    alt={`${project.title} preview`}
+                    alt={t.portfolio.previewAlt(project.title)}
                     loading="lazy"
                     width={800}
                     height={450}
@@ -101,7 +95,7 @@ export const Portfolio: React.FC = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all duration-300 mt-4"
                   >
-                    View Project
+                    {t.portfolio.viewProject}
                     <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </a>
                 </div>

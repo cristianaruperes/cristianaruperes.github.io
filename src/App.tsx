@@ -7,6 +7,8 @@ import { Education } from "./components/Education";
 import { Portfolio } from "./components/Portfolio";
 import { Publications } from "./components/Publications";
 import { Footer } from "./components/Footer";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { LanguageProvider } from "./i18n/LanguageProvider";
 
 const App: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -27,18 +29,21 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      <Sidebar isOpen={isSidebarOpen} onToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
-      <main className={`transition-all duration-300 ${isSidebarOpen ? 'lg:ml-64' : 'ml-0'}`}>
-        <Hero />
-        <About />
-        <Experience />
-        <Education />
-        <Portfolio />
-        <Publications />
-        <Footer />
-      </main>
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-white">
+        <Sidebar isOpen={isSidebarOpen} onToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
+        <LanguageSwitcher className="fixed top-6 right-6 z-50" />
+        <main className={`transition-all duration-300 ${isSidebarOpen ? 'lg:ml-64' : 'ml-0'}`}>
+          <Hero />
+          <About />
+          <Experience />
+          <Education />
+          <Portfolio />
+          <Publications />
+          <Footer />
+        </main>
+      </div>
+    </LanguageProvider>
   );
 };
 
