@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLanguage } from "../i18n/context";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -7,6 +8,7 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const [activeSection, setActiveSection] = useState("home");
+  const { t } = useLanguage();
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
@@ -17,12 +19,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   };
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "experience", label: "Experience" },
-    { id: "education", label: "Education" },
-    { id: "portfolio", label: "Portfolio" },
-    { id: "publications", label: "Publications" },
+    { id: "home", label: t.nav.home },
+    { id: "about", label: t.nav.about },
+    { id: "experience", label: t.nav.experience },
+    { id: "education", label: t.nav.education },
+    { id: "portfolio", label: t.nav.portfolio },
+    { id: "publications", label: t.nav.publications },
   ];
 
   return (
@@ -61,13 +63,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
             CR
           </div>
           <h2 className="text-center font-bold text-xl text-slate-900 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-            Cristian Daniel Aruperes
+            {t.sidebar.name}
           </h2>
           <p className="text-center text-sm text-slate-500 mt-2 animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
-            IT Enthusiast
+            {t.sidebar.role}
           </p>
           <p className="text-center text-xs text-slate-400 mt-1 animate-fadeInUp" style={{ animationDelay: '0.35s' }}>
-            Taoyuan City, Taiwan
+            {t.sidebar.location}
           </p>
         </div>
 
@@ -119,7 +121,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
               href="mailto:cristianaruperes@gmail.com"
               className="text-slate-400 hover:text-blue-600 transition-all duration-300 hover:scale-110 text-sm font-medium"
             >
-              Email
+              {t.sidebar.email}
             </a>
           </div>
         </div>

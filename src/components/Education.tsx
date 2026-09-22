@@ -1,37 +1,16 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
-
-interface EducationItem {
-  degree: string;
-  school: string;
-  period: string;
-  note?: string;
-  honor?: string;
-}
-
-const education: EducationItem[] = [
-  {
-    degree: "Master of Science — Information Management",
-    school: "Yuan-Ze University",
-    period: "Feb 2022 – Feb 2024",
-    note: "Taoyuan City, Taiwan. Thesis on deep learning for lung nodule segmentation and measurement in CT images.",
-    honor: "Full Scholarship — tuition waiver and monthly stipend"
-  },
-  {
-    degree: "Bachelor's Degree — Computer Science, Informatics",
-    school: "Universitas Klabat",
-    period: "Aug 2015 – Dec 2018",
-    note: "Activities: Student Association of Computer Science, Basketball Club.",
-    honor: "Summa Cum Laude — top students in the Computer Science faculty"
-  }
-];
+import { useLanguage } from "../i18n/context";
 
 export const Education: React.FC = () => {
+  const { t } = useLanguage();
+  const education = t.education.items;
+
   return (
     <section id="education" className="bg-white py-20 px-8">
       <div className="max-w-4xl mx-auto w-full">
         <ScrollReveal>
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">Education</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-8">{t.education.heading}</h2>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <div className="space-y-6">
