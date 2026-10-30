@@ -77,6 +77,11 @@ export interface Translation {
     rights: (year: number) => string;
     builtWith: string;
   };
+  notFound: {
+    heading: string;
+    body: string;
+    back: string;
+  };
 }
 
 const en: Translation = {
@@ -282,6 +287,11 @@ const en: Translation = {
     rights: (year) => `© ${year} Cristian Daniel Aruperes. All rights reserved.`,
     builtWith: "Built with React, TypeScript and Tailwind CSS",
   },
+  notFound: {
+    heading: "Page not found",
+    body: "That page does not exist. Try one of the sections in the menu.",
+    back: "Back to home",
+  },
 };
 
 const zh: Translation = {
@@ -485,6 +495,11 @@ const zh: Translation = {
   footer: {
     rights: (year) => `© ${year} 阿魯沛 Cristian Daniel Aruperes. 版權所有。`,
     builtWith: "以 React、TypeScript 與 Tailwind CSS 打造",
+  },
+  notFound: {
+    heading: "找不到頁面",
+    body: "這個頁面不存在，請從選單中選擇其他章節。",
+    back: "回到首頁",
   },
 };
 

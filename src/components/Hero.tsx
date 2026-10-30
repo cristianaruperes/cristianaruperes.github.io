@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../i18n/context";
 
 export const Hero: React.FC = () => {
@@ -16,13 +17,13 @@ export const Hero: React.FC = () => {
         <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
           {t.hero.tagline}
         </p>
-        <button
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full font-semibold transition-all duration-300 hover:scale-105 animate-fadeInUp"
+        <Link
+          to="/about"
+          className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full font-semibold transition-all duration-300 hover:scale-105 animate-fadeInUp"
           style={{ animationDelay: '0.4s' }}
         >
           {t.hero.cta}
-        </button>
+        </Link>
       </div>
     </section>
   );

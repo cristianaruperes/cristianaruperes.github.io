@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import { useLanguage } from "../i18n/context";
+import { navItems } from "../navigation";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -7,25 +9,14 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
-  const [activeSection, setActiveSection] = useState("home");
   const { t } = useLanguage();
 
-  const scrollToSection = (id: string) => {
-    setActiveSection(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  /** Close the overlay sidebar after navigating on mobile. */
+  const handleNavigate = () => {
+    if (window.innerWidth < 1024 && isOpen) {
+      onToggle();
     }
   };
-
-  const navItems = [
-    { id: "home", label: t.nav.home },
-    { id: "about", label: t.nav.about },
-    { id: "experience", label: t.nav.experience },
-    { id: "education", label: t.nav.education },
-    { id: "portfolio", label: t.nav.portfolio },
-    { id: "publications", label: t.nav.publications },
-  ];
 
   return (
     <>
@@ -76,22 +67,30 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
         <nav className="flex-1 px-6 overflow-y-auto">
           <ul className="space-y-1">
             {navItems.map((item, index) => (
-              <li key={item.id} className="animate-fadeInLeft" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 relative overflow-hidden group ${
-                    activeSection === item.id
-                      ? 'text-blue-600 font-semibold'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
+              <li key={item.path} className="animate-fadeInLeft" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
+                <NavLink
+                  to={item.path}
+                  end={item.path === "/"}
+                  onClick={handleNavigate}
+                  className={({ isActive }) =>
+                    `block w-full text-left px-4 py-3 rounded-xl transition-all duration-300 relative overflow-hidden group ${
+                      isActive
+                        ? 'text-blue-600 font-semibold'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`
+                  }
                 >
-                  {activeSection === item.id && (
-                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-r-full"></span>
+                  {({ isActive }) => (
+                    <>
+                      {isActive && (
+                        <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-r-full"></span>
+                      )}
+                      <span className={`transition-all duration-300 ${isActive ? 'ml-3' : 'ml-0'}`}>
+                        {t.nav[item.key]}
+                      </span>
+                    </>
                   )}
-                  <span className={`transition-all duration-300 ${activeSection === item.id ? 'ml-3' : 'ml-0'}`}>
-                    {item.label}
-                  </span>
-                </button>
+                </NavLink>
               </li>
             ))}
           </ul>
