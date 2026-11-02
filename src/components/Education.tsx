@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
+import { PageHeader } from "./PageHeader";
 import { useLanguage } from "../i18n/context";
 
 export const Education: React.FC = () => {
@@ -7,36 +8,32 @@ export const Education: React.FC = () => {
   const education = t.education.items;
 
   return (
-    <section id="education" className="bg-white py-20 px-8">
-      <div className="max-w-4xl mx-auto w-full">
-        <ScrollReveal>
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">{t.education.heading}</h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <div className="space-y-6">
-            {education.map((edu, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-slate-50 to-blue-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="flex flex-wrap justify-between items-start gap-3 mb-2">
-                  <h3 className="text-2xl font-bold text-slate-900">{edu.degree}</h3>
-                  <span className="px-4 py-1 bg-white text-blue-800 rounded-full text-sm font-medium whitespace-nowrap shadow-sm">
+    <section id="education" className="px-6 py-20 sm:px-10">
+      <div className="mx-auto w-full max-w-4xl">
+        <PageHeader command="cat education.yml" title={t.education.heading} />
+
+        <div className="space-y-6">
+          {education.map((edu, index) => (
+            <ScrollReveal key={index} delay={0.1 * (index + 1)}>
+              <div className="panel p-8 transition-colors duration-300 hover:border-mint/40">
+                <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
+                  <h2 className="text-2xl font-bold text-white">{edu.degree}</h2>
+                  <span className="whitespace-nowrap rounded-pill border border-white/10 bg-white/5 px-4 py-1 font-mono text-small text-slate-300">
                     {edu.period}
                   </span>
                 </div>
-                <p className="text-blue-600 font-semibold">{edu.school}</p>
-                {edu.note && <p className="text-slate-600 mt-3 leading-relaxed">{edu.note}</p>}
+                <p className="font-semibold text-mint">{edu.school}</p>
+                {edu.note && <p className="mt-3 leading-relaxed text-slate-400">{edu.note}</p>}
                 {edu.honor && (
-                  <p className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-4 py-1.5">
-                    <span>★</span>
+                  <p className="mt-4 inline-flex items-center gap-2 rounded-pill border border-brand-js/40 bg-brand-js/10 px-4 py-1.5 text-sm font-medium text-brand-js">
+                    <span aria-hidden="true">★</span>
                     {edu.honor}
                   </p>
                 )}
               </div>
-            ))}
-          </div>
-        </ScrollReveal>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   );

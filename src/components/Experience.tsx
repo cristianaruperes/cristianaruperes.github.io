@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
+import { PageHeader } from "./PageHeader";
 import { useLanguage } from "../i18n/context";
 
 /** Tech stacks stay untranslated — they line up with t.experience.items by index. */
@@ -18,48 +19,55 @@ export const Experience: React.FC = () => {
   }));
 
   return (
-    <section id="experience" className="bg-slate-50 py-20 px-8">
-      <div className="max-w-4xl mx-auto w-full">
-        <ScrollReveal>
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">{t.experience.heading}</h2>
-        </ScrollReveal>
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
-            <ScrollReveal key={index} delay={0.1 * (index + 1)}>
-              <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-l-4 border-blue-600">
-                <div className="flex flex-wrap justify-between items-start gap-3 mb-2">
-                  <h3 className="text-2xl font-bold text-slate-900">{exp.title}</h3>
-                  <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium whitespace-nowrap">
-                    {exp.period}
-                  </span>
-                </div>
-                <p className="text-lg text-blue-600 font-semibold">
-                  {exp.company} <span className="text-slate-400 font-normal">· {exp.type}</span>
-                </p>
-                <p className="text-sm text-slate-500 mb-4">{exp.location}</p>
+    <section id="experience" className="px-6 py-20 sm:px-10">
+      <div className="mx-auto w-full max-w-4xl">
+        <PageHeader command="git log --author=cris" title={t.experience.heading} />
 
-                <ul className="space-y-2 mb-5">
-                  {exp.highlights.map((point, i) => (
-                    <li key={i} className="flex gap-3 text-slate-600 leading-relaxed">
-                      <span className="text-blue-500 mt-1.5 shrink-0">▸</span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
+        {/* Vertical rail running the length of the timeline. */}
+        <div className="relative pl-8 before:absolute before:bottom-2 before:left-[7px] before:top-2 before:w-px before:bg-gradient-to-b before:from-mint/60 before:via-white/15 before:to-transparent sm:pl-12">
+          <div className="space-y-6">
+            {experiences.map((exp, index) => (
+              <ScrollReveal key={index} delay={0.1 * (index + 1)}>
+                <div className="relative">
+                  {/* Node on the rail. */}
+                  <span className="absolute -left-8 top-8 h-3.5 w-3.5 rounded-full border-2 border-mint bg-deep sm:-left-12" />
 
-                <div className="flex flex-wrap gap-2">
-                  {exp.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  <div className="panel p-8 transition-colors duration-300 hover:border-mint/40">
+                    <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
+                      <h2 className="text-2xl font-bold text-white">{exp.title}</h2>
+                      <span className="whitespace-nowrap rounded-pill border border-mint/30 bg-mint/10 px-4 py-1 font-mono text-small text-mintSoft">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <p className="text-lg font-semibold text-mint">
+                      {exp.company} <span className="font-normal text-slate-500">· {exp.type}</span>
+                    </p>
+                    <p className="mb-4 font-mono text-small text-slate-500">{exp.location}</p>
+
+                    <ul className="mb-5 space-y-2">
+                      {exp.highlights.map((point, i) => (
+                        <li key={i} className="flex gap-3 leading-relaxed text-slate-300">
+                          <span className="mt-1.5 shrink-0 text-mint">▸</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-pill border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-slate-400"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

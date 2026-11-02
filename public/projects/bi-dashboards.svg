@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Enterprise BI dashboards placeholder">
+  <defs>
+    <linearGradient id="biBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#biBg)"/>
+  <rect x="120" y="96" width="560" height="268" rx="18" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+  <rect x="120" y="96" width="560" height="40" rx="18" fill="#ffffff" fill-opacity="0.16"/>
+  <g fill="#ffffff" fill-opacity="0.55">
+    <circle cx="150" cy="116" r="7"/>
+    <circle cx="174" cy="116" r="7"/>
+    <circle cx="198" cy="116" r="7"/>
+  </g>
+  <g fill="#12f7d6" fill-opacity="0.55">
+    <rect x="152" y="268" width="42" height="64" rx="6"/>
+    <rect x="206" y="236" width="42" height="96" rx="6"/>
+    <rect x="260" y="200" width="42" height="132" rx="6"/>
+    <rect x="314" y="248" width="42" height="84" rx="6"/>
+  </g>
+  <path d="M400 300l44-46 40 28 52-72" fill="none" stroke="#98faec" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#ffffff" fill-opacity="0.5">
+    <circle cx="400" cy="300" r="7"/>
+    <circle cx="444" cy="254" r="7"/>
+    <circle cx="484" cy="282" r="7"/>
+    <circle cx="536" cy="210" r="7"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.6">
+    <rect x="576" y="196" width="72" height="9" rx="4.5"/>
+    <rect x="576" y="218" width="54" height="9" rx="4.5"/>
+    <rect x="576" y="240" width="64" height="9" rx="4.5"/>
+  </g>
+  <text x="400" y="404" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="26" font-weight="600" fill="#ffffff" fill-opacity="0.9">BI Dashboards</text>
+</svg>

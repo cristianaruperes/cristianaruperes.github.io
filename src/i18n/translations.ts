@@ -32,6 +32,10 @@ export interface Translation {
     role: string;
     tagline: string;
     cta: string;
+    ctaSecondary: string;
+    status: string;
+    photoAlt: string;
+    stats: { value: number; suffix: string; label: string }[];
   };
   about: {
     heading: string;
@@ -63,6 +67,10 @@ export interface Translation {
     heading: string;
     viewProject: string;
     previewAlt: (title: string) => string;
+    filterLabel: string;
+    /** Keys line up with `ProjectCategory` in components/Portfolio.tsx. */
+    categories: { all: string; ai: string; dataViz: string; web: string };
+    privateProject: string;
     items: { title: string; desc: string }[];
   };
   publications: {
@@ -76,6 +84,7 @@ export interface Translation {
   footer: {
     rights: (year: number) => string;
     builtWith: string;
+    tagline: string;
   };
   notFound: {
     heading: string;
@@ -118,6 +127,15 @@ const en: Translation = {
     tagline:
       "Building things that solve real problems — from deep learning for medical imaging to conversational chatbots and full-stack web systems.",
     cta: "Explore My Work",
+    ctaSecondary: "Get In Touch",
+    status: "Open to IT & AI opportunities",
+    photoAlt: "Cristian Daniel Aruperes",
+    stats: [
+      { value: 5, suffix: "+", label: "Years in IT" },
+      { value: 4, suffix: "", label: "Companies" },
+      { value: 2, suffix: "", label: "Publications" },
+      { value: 7, suffix: "", label: "Projects shipped" },
+    ],
   },
   about: {
     heading: "About Me",
@@ -224,6 +242,14 @@ const en: Translation = {
     heading: "Portfolio",
     viewProject: "View Project",
     previewAlt: (title) => `${title} preview`,
+    filterLabel: "Filter projects by category",
+    categories: {
+      all: "All",
+      ai: "AI & Machine Learning",
+      dataViz: "Data Visualization",
+      web: "Web Systems",
+    },
+    privateProject: "Internal project — source not public",
     items: [
       {
         title: "Lung Nodule Analysis",
@@ -247,7 +273,11 @@ const en: Translation = {
       },
       {
         title: "Personal Portfolio",
-        desc: "This site — a responsive single-page portfolio built with React 19, TypeScript and Tailwind, deployed to GitHub Pages.",
+        desc: "This site — a responsive multi-page portfolio built with React 19, TypeScript and Tailwind, deployed to GitHub Pages.",
+      },
+      {
+        title: "Enterprise BI Dashboards",
+        desc: "Company-wide Power BI dashboards giving every department self-service analytics, fed by SQL Server and automated BPM data collection.",
       },
     ],
   },
@@ -286,6 +316,7 @@ const en: Translation = {
   footer: {
     rights: (year) => `© ${year} Cristian Daniel Aruperes. All rights reserved.`,
     builtWith: "Built with React, TypeScript and Tailwind CSS",
+    tagline: "Built from scratch, not from a template.",
   },
   notFound: {
     heading: "Page not found",
@@ -328,6 +359,15 @@ const zh: Translation = {
     tagline:
       "打造能解決真實問題的系統 —— 從醫學影像的深度學習，到對話式聊天機器人與全端網站系統。",
     cta: "看看我的作品",
+    ctaSecondary: "與我聯絡",
+    status: "正在尋找 IT 與 AI 領域的機會",
+    photoAlt: "阿魯沛 Cristian Daniel Aruperes",
+    stats: [
+      { value: 5, suffix: "+", label: "年資訊科技經驗" },
+      { value: 4, suffix: "", label: "任職公司" },
+      { value: 2, suffix: "", label: "學術論文" },
+      { value: 7, suffix: "", label: "完成專案" },
+    ],
   },
   about: {
     heading: "關於我",
@@ -434,6 +474,14 @@ const zh: Translation = {
     heading: "作品集",
     viewProject: "查看專案",
     previewAlt: (title) => `${title} 預覽圖`,
+    filterLabel: "依類別篩選專案",
+    categories: {
+      all: "全部",
+      ai: "人工智慧與機器學習",
+      dataViz: "資料視覺化",
+      web: "網站系統",
+    },
+    privateProject: "內部專案 —— 原始碼未公開",
     items: [
       {
         title: "肺結節影像分析",
@@ -457,7 +505,11 @@ const zh: Translation = {
       },
       {
         title: "個人作品集網站",
-        desc: "就是這個網站 —— 以 React 19、TypeScript 與 Tailwind 打造的響應式單頁作品集，部署於 GitHub Pages。",
+        desc: "就是這個網站 —— 以 React 19、TypeScript 與 Tailwind 打造的響應式多頁作品集，部署於 GitHub Pages。",
+      },
+      {
+        title: "企業 BI 儀表板",
+        desc: "全公司導入的 Power BI 儀表板，讓各部門都能自助分析數據；資料來源為 SQL Server 與自動化的 BPM 資料蒐集流程。",
       },
     ],
   },
@@ -495,6 +547,7 @@ const zh: Translation = {
   footer: {
     rights: (year) => `© ${year} 阿魯沛 Cristian Daniel Aruperes. 版權所有。`,
     builtWith: "以 React、TypeScript 與 Tailwind CSS 打造",
+    tagline: "一行一行寫出來的，不是套版。",
   },
   notFound: {
     heading: "找不到頁面",

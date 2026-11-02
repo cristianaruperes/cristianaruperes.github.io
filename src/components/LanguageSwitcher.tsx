@@ -19,7 +19,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = 
     <div
       role="group"
       aria-label={t.languageSwitcher.label}
-      className={`inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/90 p-1 shadow-sm backdrop-blur ${className}`}
+      className={`inline-flex items-center gap-1 rounded-full border border-white/10 bg-base/90 p-1 shadow-lg backdrop-blur ${className}`}
     >
       {options.map((option) => (
         <button
@@ -30,8 +30,8 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = 
           aria-pressed={language === option.value}
           className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
             language === option.value
-              ? "bg-blue-600 text-white shadow"
-              : "text-slate-500 hover:text-blue-600"
+              ? "bg-mint text-deep shadow"
+              : "text-slate-400 hover:text-mint"
           }`}
         >
           {option.label}

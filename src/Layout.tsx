@@ -3,6 +3,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Sidebar } from "./components/Sidebar";
 import { Footer } from "./components/Footer";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { ParticleField } from "./components/ParticleField";
+import { ScrollProgress } from "./components/ScrollProgress";
 
 export const Layout: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -25,15 +27,20 @@ export const Layout: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative min-h-screen bg-deep">
+      <ParticleField />
+      <ScrollProgress />
+
       <Sidebar isOpen={isSidebarOpen} onToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
-      <LanguageSwitcher className="fixed top-6 right-6 z-50" />
+      <LanguageSwitcher className="fixed right-6 top-6 z-50" />
+
       <main
-        className={`flex min-h-screen flex-col transition-all duration-300 ${
+        className={`relative z-10 flex min-h-screen flex-col transition-all duration-300 ${
           isSidebarOpen ? "lg:ml-64" : "ml-0"
         }`}
       >
-        <div className="flex-1">
+        {/* Keyed on pathname so every route fades in as its own page. */}
+        <div key={pathname} className="animate-fadeInUp flex-1">
           <Outlet />
         </div>
         <Footer />

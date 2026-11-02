@@ -5,14 +5,11 @@ export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-slate-50 border-t border-slate-200 py-8">
-      <div className="max-w-6xl mx-auto px-8 text-center">
-        <p className="text-slate-600 text-sm">
-          {t.footer.rights(new Date().getFullYear())}
-        </p>
-        <p className="text-slate-400 text-xs mt-2">
-          {t.footer.builtWith}
-        </p>
+    <footer className="border-t border-white/10 bg-base/60 py-10 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-8 text-center">
+        <p className="font-mono text-small text-mint">{t.footer.tagline}</p>
+        <p className="mt-4 text-sm text-slate-400">{t.footer.rights(new Date().getFullYear())}</p>
+        <p className="mt-2 font-mono text-xs text-slate-600">{t.footer.builtWith}</p>
       </div>
     </footer>
   );

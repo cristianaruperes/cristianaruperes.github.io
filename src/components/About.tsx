@@ -1,5 +1,7 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
+import { PageHeader } from "./PageHeader";
+import { TiltCard } from "./TiltCard";
 import { useLanguage } from "../i18n/context";
 
 export const About: React.FC = () => {
@@ -7,17 +9,16 @@ export const About: React.FC = () => {
   const skills = t.about.skills;
 
   return (
-    <section id="about" className="bg-white py-20 px-8">
-      <div className="max-w-4xl mx-auto">
-        <ScrollReveal>
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">{t.about.heading}</h2>
-        </ScrollReveal>
+    <section id="about" className="px-6 py-20 sm:px-10">
+      <div className="mx-auto max-w-4xl">
+        <PageHeader command="cat about.md" title={t.about.heading} />
+
         <ScrollReveal delay={0.2}>
-          <div className="bg-gradient-to-br from-slate-50 to-blue-50 p-8 rounded-2xl shadow-lg">
+          <div className="panel p-8">
             {t.about.paragraphs.map((paragraph, index) => (
               <p
                 key={index}
-                className={`text-lg text-slate-700 leading-relaxed ${
+                className={`text-lg leading-relaxed text-slate-300 ${
                   index < t.about.paragraphs.length - 1 ? "mb-6" : ""
                 }`}
               >
@@ -28,15 +29,15 @@ export const About: React.FC = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={0.4}>
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
             {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-blue-600"
-              >
-                <h3 className="font-bold text-slate-900 text-xl mb-2">{skill.title}</h3>
-                <p className="text-slate-600">{skill.desc}</p>
-              </div>
+              <TiltCard key={index}>
+                <div className="h-full rounded-2xl border border-white/10 bg-base/70 p-6 backdrop-blur transition-colors duration-300 hover:border-mint/40">
+                  <p className="font-mono text-small text-mint">0{index + 1}</p>
+                  <h2 className="mt-3 text-xl font-bold text-white">{skill.title}</h2>
+                  <p className="mt-2 leading-relaxed text-slate-400">{skill.desc}</p>
+                </div>
+              </TiltCard>
             ))}
           </div>
         </ScrollReveal>
