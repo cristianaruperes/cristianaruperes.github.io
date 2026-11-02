@@ -8,6 +8,16 @@ interface SidebarProps {
   onToggle: () => void;
 }
 
+/** Mono labels mirroring each route, shown as a file tree beside the nav. */
+const navFiles: Record<string, string> = {
+  "/": "index",
+  "/about": "about",
+  "/experience": "work",
+  "/education": "edu",
+  "/portfolio": "projects",
+  "/publications": "papers",
+};
+
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const { t } = useLanguage();
 
@@ -22,8 +32,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
     <>
       {/* Overlay for mobile */}
       {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+        <div
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden"
           onClick={onToggle}
         />
       )}
@@ -31,12 +41,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       {/* Toggle Button */}
       <button
         onClick={onToggle}
-        className={`fixed top-6 z-50 bg-white border border-slate-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 ${
-          isOpen ? 'left-60 lg:left-60' : 'left-6'
+        aria-expanded={isOpen}
+        aria-label={isOpen ? "Close menu" : "Open menu"}
+        className={`fixed top-6 z-50 rounded-full border border-white/10 bg-base p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:border-mint/50 ${
+          isOpen ? "left-60 lg:left-60" : "left-6"
         }`}
       >
         <svg
-          className={`w-5 h-5 text-slate-600 transition-transform duration-300 ${isOpen ? '' : 'rotate-180'}`}
+          className={`h-5 w-5 text-mint transition-transform duration-300 ${isOpen ? "" : "rotate-180"}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -46,47 +58,65 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
       </button>
 
       {/* Sidebar */}
-      <aside className={`fixed left-0 top-0 h-screen w-64 bg-white border-r border-slate-200 flex flex-col z-40 transition-transform duration-300 ${
-        isOpen ? 'translate-x-0' : '-translate-x-64'
-      }`}>
-        <div className="px-8 pt-8 pb-5">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 mx-auto mb-3 flex items-center justify-center text-xl font-bold text-white shadow-lg animate-fadeInScale">
+      <aside
+        className={`fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-white/10 bg-base/95 backdrop-blur transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-64"
+        }`}
+      >
+        <div className="px-8 pb-5 pt-8">
+          <div className="animate-fadeInScale mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-mint/30 bg-mint/10 font-mono text-xl font-bold text-mint shadow-lg">
             CR
           </div>
-          <h2 className="text-center font-bold text-xl text-slate-900 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
+          <h2
+            className="animate-fadeInUp text-center text-lg font-bold text-white"
+            style={{ animationDelay: "0.2s" }}
+          >
             {t.sidebar.name}
           </h2>
-          <p className="text-center text-sm text-slate-500 mt-2 animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
+          <p
+            className="animate-fadeInUp mt-2 text-center font-mono text-small text-mint"
+            style={{ animationDelay: "0.3s" }}
+          >
             {t.sidebar.role}
           </p>
-          <p className="text-center text-xs text-slate-400 mt-1 animate-fadeInUp" style={{ animationDelay: '0.35s' }}>
+          <p
+            className="animate-fadeInUp mt-1 text-center text-xs text-slate-500"
+            style={{ animationDelay: "0.35s" }}
+          >
             {t.sidebar.location}
           </p>
         </div>
 
-        <nav className="flex-1 px-6 overflow-y-auto">
+        <nav className="flex-1 overflow-y-auto px-5">
           <ul className="space-y-1">
             {navItems.map((item, index) => (
-              <li key={item.path} className="animate-fadeInLeft" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
+              <li
+                key={item.path}
+                className="animate-fadeInLeft"
+                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+              >
                 <NavLink
                   to={item.path}
                   end={item.path === "/"}
                   onClick={handleNavigate}
                   className={({ isActive }) =>
-                    `block w-full text-left px-4 py-3 rounded-xl transition-all duration-300 relative overflow-hidden group ${
+                    `group relative flex w-full items-center justify-between gap-2 overflow-hidden rounded-xl px-4 py-3 text-left transition-all duration-300 ${
                       isActive
-                        ? 'text-blue-600 font-semibold'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? "bg-mint/10 font-semibold text-mint"
+                        : "text-slate-400 hover:bg-white/5 hover:text-white"
                     }`
                   }
                 >
                   {({ isActive }) => (
                     <>
                       {isActive && (
-                        <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-r-full"></span>
+                        <span className="absolute bottom-0 left-0 top-0 w-1 rounded-r-full bg-mint" />
                       )}
-                      <span className={`transition-all duration-300 ${isActive ? 'ml-3' : 'ml-0'}`}>
+                      <span className={`transition-all duration-300 ${isActive ? "ml-3" : "ml-0"}`}>
                         {t.nav[item.key]}
+                      </span>
+                      <span className="font-mono text-xs text-slate-600 transition-colors duration-300 group-hover:text-mint/60">
+                        {navFiles[item.path]}
                       </span>
                     </>
                   )}
@@ -96,29 +126,29 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
           </ul>
         </nav>
 
-        <div className="p-6 border-t border-slate-200">
-          <div className="flex gap-3 justify-center">
+        <div className="border-t border-white/10 p-6">
+          <div className="flex justify-center gap-3">
             <a
               href="https://github.com/cristianaruperes"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-blue-600 transition-all duration-300 hover:scale-110 text-sm font-medium"
+              className="text-sm font-medium text-slate-500 transition-all duration-300 hover:scale-110 hover:text-mint"
             >
-              GitHub
+              {t.sidebar.github}
             </a>
-            <span className="text-slate-300">•</span>
+            <span className="text-slate-700">•</span>
             <a
               href="https://www.linkedin.com/in/cristian-aruperes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-blue-600 transition-all duration-300 hover:scale-110 text-sm font-medium"
+              className="text-sm font-medium text-slate-500 transition-all duration-300 hover:scale-110 hover:text-mint"
             >
-              LinkedIn
+              {t.sidebar.linkedin}
             </a>
-            <span className="text-slate-300">•</span>
+            <span className="text-slate-700">•</span>
             <a
               href="mailto:cristianaruperes@gmail.com"
-              className="text-slate-400 hover:text-blue-600 transition-all duration-300 hover:scale-110 text-sm font-medium"
+              className="text-sm font-medium text-slate-500 transition-all duration-300 hover:scale-110 hover:text-mint"
             >
               {t.sidebar.email}
             </a>

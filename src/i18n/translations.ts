@@ -1,4 +1,4 @@
-export type Language = "en" | "zh";
+export type Language = "en" | "zh" | "id";
 
 export interface Translation {
   meta: {
@@ -26,12 +26,17 @@ export interface Translation {
     label: string;
     en: string;
     zh: string;
+    id: string;
   };
   hero: {
     name: string;
     role: string;
     tagline: string;
     cta: string;
+    ctaSecondary: string;
+    status: string;
+    photoAlt: string;
+    stats: { value: number; suffix: string; label: string }[];
   };
   about: {
     heading: string;
@@ -63,6 +68,10 @@ export interface Translation {
     heading: string;
     viewProject: string;
     previewAlt: (title: string) => string;
+    filterLabel: string;
+    /** Keys line up with `ProjectCategory` in components/Portfolio.tsx. */
+    categories: { all: string; ai: string; dataViz: string; web: string };
+    privateProject: string;
     items: { title: string; desc: string }[];
   };
   publications: {
@@ -76,6 +85,7 @@ export interface Translation {
   footer: {
     rights: (year: number) => string;
     builtWith: string;
+    tagline: string;
   };
   notFound: {
     heading: string;
@@ -111,6 +121,7 @@ const en: Translation = {
     label: "Language",
     en: "EN",
     zh: "中文",
+    id: "ID",
   },
   hero: {
     name: "Cristian Daniel Aruperes",
@@ -118,6 +129,15 @@ const en: Translation = {
     tagline:
       "Building things that solve real problems — from deep learning for medical imaging to conversational chatbots and full-stack web systems.",
     cta: "Explore My Work",
+    ctaSecondary: "Get In Touch",
+    status: "Open to IT & AI opportunities",
+    photoAlt: "Cristian Daniel Aruperes",
+    stats: [
+      { value: 5, suffix: "+", label: "Years in IT" },
+      { value: 4, suffix: "", label: "Companies" },
+      { value: 2, suffix: "", label: "Publications" },
+      { value: 7, suffix: "", label: "Projects shipped" },
+    ],
   },
   about: {
     heading: "About Me",
@@ -224,6 +244,14 @@ const en: Translation = {
     heading: "Portfolio",
     viewProject: "View Project",
     previewAlt: (title) => `${title} preview`,
+    filterLabel: "Filter projects by category",
+    categories: {
+      all: "All",
+      ai: "AI & Machine Learning",
+      dataViz: "Data Visualization",
+      web: "Web Systems",
+    },
+    privateProject: "Internal project — source not public",
     items: [
       {
         title: "Lung Nodule Analysis",
@@ -247,7 +275,11 @@ const en: Translation = {
       },
       {
         title: "Personal Portfolio",
-        desc: "This site — a responsive single-page portfolio built with React 19, TypeScript and Tailwind, deployed to GitHub Pages.",
+        desc: "This site — a responsive multi-page portfolio built with React 19, TypeScript and Tailwind, deployed to GitHub Pages.",
+      },
+      {
+        title: "Enterprise BI Dashboards",
+        desc: "Company-wide Power BI dashboards giving every department self-service analytics, fed by SQL Server and automated BPM data collection.",
       },
     ],
   },
@@ -286,6 +318,7 @@ const en: Translation = {
   footer: {
     rights: (year) => `© ${year} Cristian Daniel Aruperes. All rights reserved.`,
     builtWith: "Built with React, TypeScript and Tailwind CSS",
+    tagline: "Built from scratch, not from a template.",
   },
   notFound: {
     heading: "Page not found",
@@ -321,6 +354,7 @@ const zh: Translation = {
     label: "語言",
     en: "EN",
     zh: "中文",
+    id: "ID",
   },
   hero: {
     name: "阿魯沛 Cristian Daniel Aruperes",
@@ -328,6 +362,15 @@ const zh: Translation = {
     tagline:
       "打造能解決真實問題的系統 —— 從醫學影像的深度學習，到對話式聊天機器人與全端網站系統。",
     cta: "看看我的作品",
+    ctaSecondary: "與我聯絡",
+    status: "正在尋找 IT 與 AI 領域的機會",
+    photoAlt: "阿魯沛 Cristian Daniel Aruperes",
+    stats: [
+      { value: 5, suffix: "+", label: "年資訊科技經驗" },
+      { value: 4, suffix: "", label: "任職公司" },
+      { value: 2, suffix: "", label: "學術論文" },
+      { value: 7, suffix: "", label: "完成專案" },
+    ],
   },
   about: {
     heading: "關於我",
@@ -434,6 +477,14 @@ const zh: Translation = {
     heading: "作品集",
     viewProject: "查看專案",
     previewAlt: (title) => `${title} 預覽圖`,
+    filterLabel: "依類別篩選專案",
+    categories: {
+      all: "全部",
+      ai: "人工智慧與機器學習",
+      dataViz: "資料視覺化",
+      web: "網站系統",
+    },
+    privateProject: "內部專案 —— 原始碼未公開",
     items: [
       {
         title: "肺結節影像分析",
@@ -457,7 +508,11 @@ const zh: Translation = {
       },
       {
         title: "個人作品集網站",
-        desc: "就是這個網站 —— 以 React 19、TypeScript 與 Tailwind 打造的響應式單頁作品集，部署於 GitHub Pages。",
+        desc: "就是這個網站 —— 以 React 19、TypeScript 與 Tailwind 打造的響應式多頁作品集，部署於 GitHub Pages。",
+      },
+      {
+        title: "企業 BI 儀表板",
+        desc: "全公司導入的 Power BI 儀表板，讓各部門都能自助分析數據；資料來源為 SQL Server 與自動化的 BPM 資料蒐集流程。",
       },
     ],
   },
@@ -495,6 +550,7 @@ const zh: Translation = {
   footer: {
     rights: (year) => `© ${year} 阿魯沛 Cristian Daniel Aruperes. 版權所有。`,
     builtWith: "以 React、TypeScript 與 Tailwind CSS 打造",
+    tagline: "一行一行寫出來的，不是套版。",
   },
   notFound: {
     heading: "找不到頁面",
@@ -503,4 +559,237 @@ const zh: Translation = {
   },
 };
 
-export const translations: Record<Language, Translation> = { en, zh };
+const id: Translation = {
+  meta: {
+    htmlLang: "id",
+    title: "Cristian Daniel Aruperes | Penggiat IT",
+    description:
+      "Cristian Daniel Aruperes — IT Specialist di Taoyuan City, Taiwan. Pengalaman 5+ tahun di pengembangan web, analisis data dan solusi AI. Magister Manajemen Informasi, Yuan-Ze University.",
+  },
+  nav: {
+    home: "Beranda",
+    about: "Tentang Saya",
+    experience: "Pengalaman",
+    education: "Pendidikan",
+    portfolio: "Portofolio",
+    publications: "Publikasi",
+  },
+  sidebar: {
+    name: "Cristian Daniel Aruperes",
+    role: "Penggiat IT",
+    location: "Taoyuan City, Taiwan",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    email: "Email",
+  },
+  languageSwitcher: {
+    label: "Bahasa",
+    en: "EN",
+    zh: "中文",
+    id: "ID",
+  },
+  hero: {
+    name: "Cristian Daniel Aruperes",
+    role: "Penggiat IT",
+    tagline:
+      "Membangun sistem yang menyelesaikan masalah nyata — mulai dari deep learning untuk citra medis hingga chatbot percakapan dan sistem web full-stack.",
+    cta: "Lihat Karya Saya",
+    ctaSecondary: "Hubungi Saya",
+    status: "Terbuka untuk peluang di bidang IT & AI",
+    photoAlt: "Cristian Daniel Aruperes",
+    stats: [
+      { value: 5, suffix: "+", label: "Tahun di bidang IT" },
+      { value: 4, suffix: "", label: "Perusahaan" },
+      { value: 2, suffix: "", label: "Publikasi" },
+      { value: 7, suffix: "", label: "Proyek selesai" },
+    ],
+  },
+  about: {
+    heading: "Tentang Saya",
+    paragraphs: [
+      "Halo, saya Cris. Lebih dari lima tahun terakhir saya berkarier di bidang IT, dengan latar belakang kuat di pengembangan web, analisis data dan solusi AI. Saya menyelesaikan studi magister Manajemen Informasi di Yuan-Ze University.",
+      "Sepanjang perjalanan itu saya menghadapi berbagai tantangan dan kesempatan memecahkan masalah yang mengajarkan saya mengambil keputusan yang tepat serta beradaptasi dengan framework dan teknologi modern. Menurut saya teknologi terbaru memang bernilai, tetapi menjaga stabilitas dan keandalan sistem sama pentingnya. Bekerja dengan klien dan rekan dari berbagai negara juga membuat saya terbiasa menyesuaikan diri dengan lingkungan dan budaya yang berbeda.",
+      "Saya antusias menjajaki peluang di bidang IT, termasuk peran di luar pengalaman saya saat ini, dengan motivasi kuat untuk terus belajar, beradaptasi dan memperluas keahlian teknis di lingkungan AI dan automasi yang berkembang pesat.",
+    ],
+    skills: [
+      {
+        title: "AI & Machine Learning",
+        desc: "LLM, RAG, TensorFlow, Keras, segmentasi citra medis",
+      },
+      {
+        title: "Pengembangan Web",
+        desc: "React, .NET / C#, Laravel, PHP, REST API",
+      },
+      {
+        title: "Data & Automasi",
+        desc: "SQL Server, dashboard Power BI, n8n, alur kerja BPM",
+      },
+    ],
+  },
+  experience: {
+    heading: "Pengalaman Kerja",
+    items: [
+      {
+        title: "Information Technology Specialist",
+        company: "HO YU TEXTILE CO., LTD.",
+        type: "Tetap",
+        period: "Okt 2025 – Sekarang",
+        location: "Taiwan · Di kantor",
+        highlights: [
+          "Merancang dan mengembangkan platform web ERP, EIP dan MES internal yang menopang operasional inti perusahaan",
+          "Membangun chatbot AI yang disesuaikan dengan alur kerja dan kebutuhan informasi tiap departemen",
+          "Menerapkan dashboard visualisasi data untuk seluruh perusahaan, sehingga setiap departemen dapat menganalisis datanya sendiri",
+          "Memimpin inisiatif digitalisasi, mengubah proses manual berbasis kertas menjadi alur kerja digital yang otomatis",
+          "Merancang alur kerja BPM yang menstandarkan pengumpulan data dan menekan kesalahan input manual",
+          "Menjadi jembatan antara operasional lantai pabrik dan sistem IT/AI modern, mendorong transformasi Industri 4.0",
+        ],
+      },
+      {
+        title: "Asisten Peneliti",
+        company: "Yuan-Ze University",
+        type: "Paruh waktu",
+        period: "Agu 2022 – Jan 2024",
+        location: "Taoyuan City, Taiwan · Di kampus",
+        highlights: [
+          "Melakukan riset pascasarjana di bidang AI untuk citra medis: deteksi dan segmentasi nodul paru (fokus tesis), deteksi boil-off gas, serta segmentasi otak dan retina",
+          "Berkolaborasi dengan mitra eksternal Far Eastern Memorial Hospital dan U-Ming Company dalam riset terapan",
+          "Menulis makalah dan mempresentasikan hasil penelitian di pertemuan serta konferensi akademik",
+          "Memimpin pengumpulan dan analisis dataset; mengimplementasikan dan membandingkan model deep learning untuk menemukan pendekatan terbaik",
+        ],
+      },
+      {
+        title: "Software Engineer",
+        company: "PT Bussan Auto Finance",
+        type: "Tetap",
+        period: "Agu 2021 – Mar 2022",
+        location: "Jakarta, Indonesia · Di kantor",
+        highlights: [
+          "Menyelesaikan “Sandia Services”, platform administrasi internal, lebih cepat dari jadwal sambil mendukung inisiatif tim lainnya",
+          "Membangun dan memelihara situs serta antarmuka untuk perusahaan dengan 8,2 juta+ nasabah",
+          "Memastikan aksesibilitas lintas platform dan desain responsif di desktop maupun perangkat mobile",
+          "Bekerja sama dengan tim Project Management dan QA untuk menguji kegunaan, performa dan kecepatan di setiap rilis",
+        ],
+      },
+      {
+        title: "Software Developer",
+        company: "KiLK Productions Pte Ltd",
+        type: "Penuh waktu",
+        period: "Mar 2019 – Jun 2021",
+        location: "Singapura · Remote",
+        highlights: [
+          "Mengembangkan dan memelihara produk digital utama untuk klien asal Singapura, Alpome Pte. Ltd.",
+          "Memimpin integrasi AirAsia API sehingga platform klien dapat terhubung dengan layanan pihak ketiga",
+          "Mengelola seluruh portofolio situs klien dari hulu ke hilir — ketersediaan, pembaruan dan performa",
+          "Membangun aplikasi web dan mobile baru dari nol, serta memberikan demo produk dan dukungan pelanggan",
+          "Berkolaborasi setiap hari dengan tim tersebar di Thailand, India dan Singapura",
+        ],
+      },
+    ],
+  },
+  education: {
+    heading: "Pendidikan",
+    items: [
+      {
+        degree: "Magister Sains — Manajemen Informasi",
+        school: "Yuan-Ze University",
+        period: "Feb 2022 – Feb 2024",
+        note: "Taoyuan City, Taiwan. Tesis mengenai deep learning untuk segmentasi dan pengukuran nodul paru pada citra CT.",
+        honor: "Beasiswa Penuh — bebas biaya kuliah dan tunjangan bulanan",
+      },
+      {
+        degree: "Sarjana — Ilmu Komputer, Informatika",
+        school: "Universitas Klabat",
+        period: "Agu 2015 – Des 2018",
+        note: "Kegiatan: Himpunan Mahasiswa Ilmu Komputer, Klub Basket.",
+        honor: "Summa Cum Laude — mahasiswa terbaik di Fakultas Ilmu Komputer",
+      },
+    ],
+  },
+  portfolio: {
+    heading: "Portofolio",
+    viewProject: "Lihat Proyek",
+    previewAlt: (title) => `Pratinjau ${title}`,
+    filterLabel: "Saring proyek berdasarkan kategori",
+    categories: {
+      all: "Semua",
+      ai: "AI & Machine Learning",
+      dataViz: "Visualisasi Data",
+      web: "Sistem Web",
+    },
+    privateProject: "Proyek internal — kode sumber tidak dipublikasikan",
+    items: [
+      {
+        title: "Analisis Nodul Paru",
+        desc: "Riset deep learning untuk segmentasi dan pengukuran nodul paru pada citra CT, memajukan analisis citra medis secara otomatis.",
+      },
+      {
+        title: "Chatbot LINE — Universitas YZU",
+        desc: "Asisten percakapan yang menjawab pertanyaan seputar program studi, fasilitas kampus dan proses pendaftaran.",
+      },
+      {
+        title: "Chatbot LINE — Pariwisata Bali",
+        desc: "Chatbot pariwisata yang memberi jawaban cepat dan akurat untuk membantu wisatawan maupun warga lokal menjelajahi kota.",
+      },
+      {
+        title: "Sistem Manajemen Sekolah",
+        desc: "Sistem informasi sekolah untuk mengelola data siswa dan akademik, dibangun dengan Laravel dan frontend Bootstrap.",
+      },
+      {
+        title: "Sistem Manajemen Klinik",
+        desc: "Sistem informasi klinik umum yang mencakup rekam medis dan kunjungan pasien, dibangun dengan Laravel dan frontend Bootstrap.",
+      },
+      {
+        title: "Portofolio Pribadi",
+        desc: "Situs ini — portofolio multi-halaman yang responsif, dibangun dengan React 19, TypeScript dan Tailwind, di-deploy ke GitHub Pages.",
+      },
+      {
+        title: "Dashboard BI Perusahaan",
+        desc: "Dashboard Power BI untuk seluruh perusahaan yang memberi setiap departemen analisis mandiri, bersumber dari SQL Server dan pengumpulan data BPM otomatis.",
+      },
+    ],
+  },
+  publications: {
+    heading: "Publikasi & Sertifikasi",
+    certificationsHeading: "Lisensi & Sertifikasi",
+    languagesHeading: "Bahasa",
+    items: [
+      {
+        title:
+          "Lung Nodule Analysis in CT Images: Deep Learning for Segmentation and Measurement",
+        venue: "Association for Computing Machinery (ACM), New York, Amerika Serikat",
+        date: "9 Sep 2024",
+        abstract:
+          "Penelitian ini tidak hanya membahas segmentasi nodul, tetapi juga pengukurannya — tahap penting dalam diagnosis kanker paru. Berbekal dataset yang disusun dengan cermat dan teknik deep learning, temuannya berpotensi memperbaiki deteksi dini serta strategi pengobatan bagi mereka yang berisiko terkena kanker paru.",
+      },
+      {
+        title: "The Development of Web Portal for Higher Education in North Sulawesi",
+        venue: "Corisindo",
+        date: "28 Agu 2021",
+        abstract:
+          "Penelitian ini menyoroti terbatasnya informasi perguruan tinggi di Sulawesi Utara serta publikasinya yang kurang efisien, sehingga calon mahasiswa dan orang tua sulit mengenali institusi yang tepercaya. Dengan metode waterfall termodifikasi dan framework Laravel, penelitian ini menghasilkan portal web yang menyimpan, mengelola dan menyajikan informasi kampus secara akurat dan mutakhir.",
+      },
+    ],
+    certifications: [
+      {
+        name: "Cisco Certified Network Associate Routing and Switching (CCNA)",
+        issuer: "Cisco",
+      },
+    ],
+    languages: [
+      { name: "Inggris", level: "Kemampuan kerja profesional" },
+      { name: "Mandarin", level: "Kemampuan dasar" },
+    ],
+  },
+  footer: {
+    rights: (year) => `© ${year} Cristian Daniel Aruperes. Seluruh hak cipta dilindungi.`,
+    builtWith: "Dibangun dengan React, TypeScript dan Tailwind CSS",
+    tagline: "Ditulis dari nol, bukan dari template.",
+  },
+  notFound: {
+    heading: "Halaman tidak ditemukan",
+    body: "Halaman tersebut tidak ada. Silakan pilih salah satu bagian di menu.",
+    back: "Kembali ke beranda",
+  },
+};
+
+export const translations: Record<Language, Translation> = { en, zh, id };
