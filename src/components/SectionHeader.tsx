@@ -22,7 +22,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({ command, title }) 
         <span className="select-none text-slate-500">$ </span>
         {command}
       </p>
-      <h2 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">{title}</h2>
+      <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        {title}
+      </h2>
       <div className="mt-5 h-px w-24 bg-gradient-to-r from-mint to-transparent" />
     </div>
   </ScrollReveal>

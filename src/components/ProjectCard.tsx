@@ -25,7 +25,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <TiltCard className="h-full">
-      <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-base/70 backdrop-blur transition-colors duration-300 hover:border-mint/40">
+      <article className="panel group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-mint/40">
         <div className="aspect-video overflow-hidden bg-deep">
           <img
             src={image}

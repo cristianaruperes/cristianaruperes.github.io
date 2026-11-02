@@ -97,7 +97,7 @@ export const FloatingNav: React.FC = () => {
       {isMenuOpen && (
         <div
           id="floating-menu"
-          className="animate-fadeInUp mx-auto mb-2 max-w-5xl rounded-2xl border border-white/10 bg-base/95 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
+          className="animate-fadeInUp mx-auto mb-2 max-w-6xl rounded-2xl border border-white/10 bg-deep/80 p-3 shadow-2xl backdrop-blur-2xl lg:hidden"
         >
           <ul className="flex flex-col gap-1">
             {navItems.map((item) => (
@@ -135,7 +135,9 @@ export const FloatingNav: React.FC = () => {
       )}
 
       <nav
-        className={`mx-auto flex max-w-5xl items-center gap-3 rounded-pill border border-white/10 bg-base/95 px-4 shadow-2xl backdrop-blur-xl transition-all duration-300 ${
+        /* Darker and less transparent than the cards: text sits on top of it, so
+           legibility wins over translucency. */
+        className={`mx-auto flex max-w-6xl items-center gap-3 rounded-pill border border-white/10 bg-deep/80 px-4 shadow-2xl backdrop-blur-2xl transition-all duration-300 ${
           isScrolled ? "py-2" : "py-3"
         }`}
       >

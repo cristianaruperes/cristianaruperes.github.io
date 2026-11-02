@@ -38,11 +38,13 @@ export const Hero: React.FC = () => {
             {t.hero.status}
           </p>
 
-          <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-6xl">
             {t.hero.name}
           </h1>
-          <p className="mt-3 font-mono text-lead text-mint">{t.hero.role}</p>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-400">{t.hero.tagline}</p>
+          <p className="mt-3 font-mono text-lg text-mint sm:text-lead">{t.hero.role}</p>
+          <p className="mt-6 max-w-xl leading-relaxed text-slate-400 sm:text-lg">
+            {t.hero.tagline}
+          </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
@@ -132,8 +134,8 @@ export const Hero: React.FC = () => {
       {/* Remaining numbers. */}
       <div className="relative z-10 mx-auto mt-24 grid max-w-6xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
         {otherStats.map((stat) => (
-          <div key={stat.label} className="bg-base/80 px-6 py-8 text-center backdrop-blur">
-            <p className="font-mono text-4xl font-bold text-mint">
+          <div key={stat.label} className="bg-white/[0.04] px-6 py-8 text-center backdrop-blur-xl">
+            <p className="font-mono text-3xl font-bold text-mint sm:text-4xl">
               <CountUp to={stat.value} suffix={stat.suffix} />
             </p>
             <p className="mt-2 text-sm text-slate-400">{stat.label}</p>

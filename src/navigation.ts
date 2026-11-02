@@ -23,4 +23,5 @@ export const navItems: NavItem[] = [
   { kind: "section", id: "education", key: "education" },
   { kind: "section", id: "publications", key: "publications" },
   { kind: "route", path: "/portfolio", key: "portfolio" },
+  { kind: "section", id: "contact", key: "contact" },
 ];
