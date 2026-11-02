@@ -353,6 +353,7 @@ const en: Translation = {
       },
     ],
     languages: [
+      { name: "Indonesian", level: "Native proficiency" },
       { name: "English", level: "Professional working proficiency" },
       { name: "Chinese", level: "Elementary proficiency" },
     ],
@@ -633,6 +634,7 @@ const zh: Translation = {
       },
     ],
     languages: [
+      { name: "印尼文", level: "母語" },
       { name: "英文", level: "專業工作能力" },
       { name: "中文", level: "基礎溝通能力" },
     ],
@@ -914,6 +916,7 @@ const id: Translation = {
       },
     ],
     languages: [
+      { name: "Indonesia", level: "Bahasa ibu" },
       { name: "Inggris", level: "Kemampuan kerja profesional" },
       { name: "Mandarin", level: "Kemampuan dasar" },
     ],
