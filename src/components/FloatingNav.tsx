@@ -125,7 +125,7 @@ export const FloatingNav: React.FC = () => {
             </a>
             <span className="text-slate-700">•</span>
             <a
-              href="mailto:cristianaruperes@gmail.com"
+              href="mailto:cristianaruperes12@gmail.com"
               className="text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-mint"
             >
               {t.sidebar.email}

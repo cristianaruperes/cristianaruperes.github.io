@@ -55,7 +55,7 @@ export const Hero: React.FC = () => {
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
             <a
-              href="mailto:cristianaruperes@gmail.com"
+              href="mailto:cristianaruperes12@gmail.com"
               className="inline-flex items-center gap-2 rounded-pill border border-white/15 px-7 py-3 font-semibold text-slate-200 transition-all duration-300 hover:border-mint/60 hover:text-mint"
             >
               {t.hero.ctaSecondary}

@@ -3,7 +3,7 @@ import { ScrollReveal } from "./ScrollReveal";
 import { SectionHeader } from "./SectionHeader";
 import { useLanguage } from "../i18n/context";
 
-const EMAIL = "cristianaruperes@gmail.com";
+const EMAIL = "cristianaruperes12@gmail.com";
 
 export const Contact: React.FC = () => {
   const { t } = useLanguage();

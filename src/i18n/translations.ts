@@ -378,7 +378,7 @@ const en: Translation = {
       },
       {
         q: "What's the best way to reach you?",
-        a: "Email is best — cristianaruperes@gmail.com. You can also find me on LinkedIn and GitHub.",
+        a: "Email is best — cristianaruperes12@gmail.com. You can also find me on LinkedIn and GitHub.",
       },
     ],
   },
@@ -658,7 +658,7 @@ const zh: Translation = {
       },
       {
         q: "聯絡你最好的方式是什麼？",
-        a: "電子郵件最快 —— cristianaruperes@gmail.com。也歡迎透過 LinkedIn 或 GitHub 與我聯繫。",
+        a: "電子郵件最快 —— cristianaruperes12@gmail.com。也歡迎透過 LinkedIn 或 GitHub 與我聯繫。",
       },
     ],
   },
@@ -939,7 +939,7 @@ const id: Translation = {
       },
       {
         q: "Cara terbaik menghubungi Anda?",
-        a: "Lewat email — cristianaruperes@gmail.com. Saya juga bisa dihubungi melalui LinkedIn dan GitHub.",
+        a: "Lewat email — cristianaruperes12@gmail.com. Saya juga bisa dihubungi melalui LinkedIn dan GitHub.",
       },
     ],
   },
