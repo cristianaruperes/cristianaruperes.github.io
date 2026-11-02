@@ -59,6 +59,10 @@ export interface Translation {
       highlights: string[];
     }[];
   };
+  tools: {
+    heading: string;
+    categories: { ai: string; web: string; data: string; workflow: string };
+  };
   journey: {
     heading: string;
     education: string;
@@ -94,6 +98,8 @@ export interface Translation {
     heading: string;
     certificationsHeading: string;
     languagesHeading: string;
+    /** Label on the link through to a paper. */
+    viewPaper: string;
     items: { title: string; venue: string; date: string; abstract: string }[];
     certifications: { name: string; issuer: string }[];
     languages: { name: string; level: string }[];
@@ -255,6 +261,15 @@ const en: Translation = {
       },
     ],
   },
+  tools: {
+    heading: "Tools I Use",
+    categories: {
+      ai: "AI & Machine Learning",
+      web: "Web Development",
+      data: "Data & BI",
+      workflow: "Automation & Workflow",
+    },
+  },
   journey: {
     heading: "My Journey",
     education: "Education",
@@ -329,6 +344,7 @@ const en: Translation = {
     heading: "Publications & Credentials",
     certificationsHeading: "Licenses & Certifications",
     languagesHeading: "Languages",
+    viewPaper: "Read the paper",
     items: [
       {
         title:
@@ -537,6 +553,15 @@ const zh: Translation = {
       },
     ],
   },
+  tools: {
+    heading: "我使用的工具",
+    categories: {
+      ai: "人工智慧與機器學習",
+      web: "網站開發",
+      data: "資料與商業智慧",
+      workflow: "自動化與流程",
+    },
+  },
   journey: {
     heading: "我的歷程",
     education: "學業",
@@ -611,6 +636,7 @@ const zh: Translation = {
     heading: "著作與證照",
     certificationsHeading: "證照與認證",
     languagesHeading: "語言能力",
+    viewPaper: "閱讀論文",
     items: [
       {
         title: "CT 影像之肺結節分析：運用深度學習進行分割與量測",
@@ -818,6 +844,15 @@ const id: Translation = {
       },
     ],
   },
+  tools: {
+    heading: "Tools yang Saya Gunakan",
+    categories: {
+      ai: "AI & Machine Learning",
+      web: "Pengembangan Web",
+      data: "Data & BI",
+      workflow: "Automasi & Alur Kerja",
+    },
+  },
   journey: {
     heading: "Perjalanan Saya",
     education: "Pendidikan",
@@ -892,6 +927,7 @@ const id: Translation = {
     heading: "Publikasi & Sertifikasi",
     certificationsHeading: "Lisensi & Sertifikasi",
     languagesHeading: "Bahasa",
+    viewPaper: "Baca publikasinya",
     items: [
       {
         title:

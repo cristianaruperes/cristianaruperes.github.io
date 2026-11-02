@@ -3,6 +3,15 @@ import { ScrollReveal } from "./ScrollReveal";
 import { SectionHeader } from "./SectionHeader";
 import { useLanguage } from "../i18n/context";
 
+/**
+ * Where each paper can be read, lining up with `t.publications.items` by index.
+ * URLs stay untranslated. Leave an entry empty and no link is rendered.
+ */
+const publicationLinks: string[] = [
+  "", // Lung Nodule Analysis in CT Images (ACM, 2024)
+  ""  // Web Portal for Higher Education in North Sulawesi (Corisindo, 2021)
+];
+
 export const Publications: React.FC = () => {
   const { t } = useLanguage();
   const { items: publications, certifications, languages } = t.publications;
@@ -24,6 +33,18 @@ export const Publications: React.FC = () => {
                 </div>
                 <p className="mb-3 font-semibold text-mint">{pub.venue}</p>
                 <p className="leading-relaxed text-slate-400">{pub.abstract}</p>
+
+                {publicationLinks[index] && (
+                  <a
+                    href={publicationLinks[index]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 font-semibold text-mint transition-all duration-300 hover:gap-3"
+                  >
+                    {t.publications.viewPaper}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                )}
               </div>
             </ScrollReveal>
           ))}
