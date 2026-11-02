@@ -10,9 +10,10 @@ interface LanguageSwitcherProps {
 export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = "" }) => {
   const { language, setLanguage, t } = useLanguage();
 
-  const options: { value: Language; label: string }[] = [
-    { value: "en", label: t.languageSwitcher.en },
-    { value: "zh", label: t.languageSwitcher.zh },
+  const options: { value: Language; label: string; lang: string }[] = [
+    { value: "en", label: t.languageSwitcher.en, lang: "en" },
+    { value: "zh", label: t.languageSwitcher.zh, lang: "zh-Hant" },
+    { value: "id", label: t.languageSwitcher.id, lang: "id" },
   ];
 
   return (
@@ -25,7 +26,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = 
         <button
           key={option.value}
           type="button"
-          lang={option.value === "zh" ? "zh-Hant" : "en"}
+          lang={option.lang}
           onClick={() => setLanguage(option.value)}
           aria-pressed={language === option.value}
           className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
