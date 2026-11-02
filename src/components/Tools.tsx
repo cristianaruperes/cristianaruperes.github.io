@@ -81,7 +81,8 @@ export const Tools: React.FC = () => {
         <div className="grid gap-6 md:grid-cols-2">
           {groups.map((group, index) => (
             <ScrollReveal key={group.key} delay={index * 0.08}>
-              <div className="panel h-full p-6">
+              {/* Transparent, like the KPI strip — only the mint outline is drawn. */}
+              <div className="h-full rounded-2xl border border-mint/40 p-6">
                 <h3 className="font-mono text-small uppercase tracking-wider text-mint">
                   {t.tools.categories[group.key]}
                 </h3>
@@ -90,7 +91,7 @@ export const Tools: React.FC = () => {
                   {group.tools.map((tool) => (
                     <li
                       key={tool.name}
-                      className="flex items-center gap-2 rounded-pill border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 transition-colors duration-300 hover:border-mint/40 hover:text-white"
+                      className="flex items-center gap-2 rounded-pill border border-mint/25 px-3 py-2 text-sm text-slate-300 transition-colors duration-300 hover:border-mint hover:text-white"
                     >
                       {tool.icon && (
                         <img

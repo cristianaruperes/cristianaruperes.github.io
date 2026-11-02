@@ -349,8 +349,9 @@ const en: Translation = {
       {
         title:
           "Lung Nodule Analysis in CT Images: Deep Learning for Segmentation and Measurement",
-        venue: "Association for Computing Machinery (ACM), New York, United States",
-        date: "Sep 9, 2024",
+        venue:
+          "8th International Conference on Medical and Health Informatics (ICMHI 2024) · ACM",
+        date: "May 17, 2024",
         abstract:
           "Contributes not only to nodule segmentation but extends to nodule measurement — a critical stage in lung cancer diagnosis. Built on a meticulously curated dataset and deep learning techniques, the findings hold potential to improve early detection and treatment strategies for individuals at risk of lung cancer.",
       },
@@ -640,8 +641,8 @@ const zh: Translation = {
     items: [
       {
         title: "CT 影像之肺結節分析：運用深度學習進行分割與量測",
-        venue: "美國計算機協會（ACM），美國紐約",
-        date: "2024 年 9 月 9 日",
+        venue: "第八屆國際醫療與健康資訊學研討會（ICMHI 2024）· ACM",
+        date: "2024 年 5 月 17 日",
         abstract:
           "本研究不僅著重於結節分割，更延伸至結節量測 —— 這是肺癌診斷的關鍵環節。研究以精心整理的資料集與深度學習技術為基礎，其成果有助於改善肺癌高風險族群的早期偵測與治療策略。",
       },
@@ -932,8 +933,9 @@ const id: Translation = {
       {
         title:
           "Lung Nodule Analysis in CT Images: Deep Learning for Segmentation and Measurement",
-        venue: "Association for Computing Machinery (ACM), New York, Amerika Serikat",
-        date: "9 Sep 2024",
+        venue:
+          "8th International Conference on Medical and Health Informatics (ICMHI 2024) · ACM",
+        date: "17 Mei 2024",
         abstract:
           "Penelitian ini tidak hanya membahas segmentasi nodul, tetapi juga pengukurannya — tahap penting dalam diagnosis kanker paru. Berbekal dataset yang disusun dengan cermat dan teknik deep learning, temuannya berpotensi memperbaiki deteksi dini serta strategi pengobatan bagi mereka yang berisiko terkena kanker paru.",
       },
