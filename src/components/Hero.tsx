@@ -121,7 +121,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Floating headline stat — the remaining three sit in the strip below. */}
-            <div className="panel absolute -left-3 top-6 px-5 py-3 text-center sm:-left-6 lg:-left-10">
+            <div className="panel absolute -left-3 top-6 border-mint/40 px-5 py-3 text-center sm:-left-6 lg:-left-10">
               <p className="font-mono text-3xl font-bold text-mint">
                 <CountUp to={headlineStat.value} suffix={headlineStat.suffix} />
               </p>
@@ -131,10 +131,11 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Remaining numbers. */}
-      <div className="relative z-10 mx-auto mt-24 grid max-w-6xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+      {/* Remaining numbers. Transparent, so only the mint outline and the
+          dividers between cells are drawn. */}
+      <div className="relative z-10 mx-auto mt-24 grid max-w-6xl grid-cols-1 divide-y divide-mint/25 overflow-hidden rounded-2xl border border-mint/40 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
         {otherStats.map((stat) => (
-          <div key={stat.label} className="bg-white/[0.04] px-6 py-8 text-center backdrop-blur-xl">
+          <div key={stat.label} className="px-6 py-8 text-center">
             <p className="font-mono text-3xl font-bold text-mint sm:text-4xl">
               <CountUp to={stat.value} suffix={stat.suffix} />
             </p>
