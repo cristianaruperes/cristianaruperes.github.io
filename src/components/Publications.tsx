@@ -8,8 +8,10 @@ import { useLanguage } from "../i18n/context";
  * URLs stay untranslated. Leave an entry empty and no link is rendered.
  */
 const publicationLinks: string[] = [
-  "", // Lung Nodule Analysis in CT Images (ACM, 2024)
-  ""  // Web Portal for Higher Education in North Sulawesi (Corisindo, 2021)
+  // Lung Nodule Analysis in CT Images — ICMHI 2024, published by ACM
+  "https://dl.acm.org/doi/10.1145/3673971.3673994",
+  // Web Portal for Higher Education in North Sulawesi — Corisindo
+  "https://ejournal.raharja.ac.id/index.php/corisindo/article/view/1912"
 ];
 
 export const Publications: React.FC = () => {
