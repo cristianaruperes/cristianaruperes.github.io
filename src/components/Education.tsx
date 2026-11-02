@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
-import { PageHeader } from "./PageHeader";
+import { SectionHeader } from "./SectionHeader";
 import { useLanguage } from "../i18n/context";
 
 export const Education: React.FC = () => {
@@ -10,14 +10,14 @@ export const Education: React.FC = () => {
   return (
     <section id="education" className="px-6 py-20 sm:px-10">
       <div className="mx-auto w-full max-w-4xl">
-        <PageHeader command="cat education.yml" title={t.education.heading} />
+        <SectionHeader command="cat education.yml" title={t.education.heading} />
 
         <div className="space-y-6">
           {education.map((edu, index) => (
             <ScrollReveal key={index} delay={0.1 * (index + 1)}>
               <div className="panel p-8 transition-colors duration-300 hover:border-mint/40">
                 <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
-                  <h2 className="text-2xl font-bold text-white">{edu.degree}</h2>
+                  <h3 className="text-xl font-bold text-white sm:text-2xl">{edu.degree}</h3>
                   <span className="whitespace-nowrap rounded-pill border border-white/10 bg-white/5 px-4 py-1 font-mono text-small text-slate-300">
                     {edu.period}
                   </span>

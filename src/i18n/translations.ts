@@ -13,6 +13,7 @@ export interface Translation {
     education: string;
     portfolio: string;
     publications: string;
+    contact: string;
   };
   sidebar: {
     name: string;
@@ -21,6 +22,10 @@ export interface Translation {
     github: string;
     linkedin: string;
     email: string;
+  };
+  menu: {
+    open: string;
+    close: string;
   };
   languageSwitcher: {
     label: string;
@@ -54,6 +59,13 @@ export interface Translation {
       highlights: string[];
     }[];
   };
+  journey: {
+    heading: string;
+    education: string;
+    work: string;
+    /** Label on the right-hand end of the rail. */
+    now: string;
+  };
   education: {
     heading: string;
     items: {
@@ -66,6 +78,10 @@ export interface Translation {
   };
   portfolio: {
     heading: string;
+    /** Heading for the home page's selected-projects section. */
+    featuredHeading: string;
+    /** Label on the button linking from the home page to the full portfolio. */
+    viewAll: string;
     viewProject: string;
     previewAlt: (title: string) => string;
     filterLabel: string;
@@ -81,6 +97,19 @@ export interface Translation {
     items: { title: string; venue: string; date: string; abstract: string }[];
     certifications: { name: string; issuer: string }[];
     languages: { name: string; level: string }[];
+  };
+  faq: {
+    heading: string;
+    items: { q: string; a: string }[];
+  };
+  contact: {
+    heading: string;
+    intro: string;
+    emailLabel: string;
+    locationLabel: string;
+    locationValue: string;
+    socialLabel: string;
+    cta: string;
   };
   footer: {
     rights: (year: number) => string;
@@ -108,6 +137,7 @@ const en: Translation = {
     education: "Education",
     portfolio: "Portfolio",
     publications: "Publications",
+    contact: "Contact",
   },
   sidebar: {
     name: "Cristian Daniel Aruperes",
@@ -116,6 +146,10 @@ const en: Translation = {
     github: "GitHub",
     linkedin: "LinkedIn",
     email: "Email",
+  },
+  menu: {
+    open: "Open menu",
+    close: "Close menu",
   },
   languageSwitcher: {
     label: "Language",
@@ -221,6 +255,12 @@ const en: Translation = {
       },
     ],
   },
+  journey: {
+    heading: "My Journey",
+    education: "Education",
+    work: "Work",
+    now: "Now",
+  },
   education: {
     heading: "Education",
     items: [
@@ -242,6 +282,8 @@ const en: Translation = {
   },
   portfolio: {
     heading: "Portfolio",
+    featuredHeading: "Selected Work",
+    viewAll: "View All Projects",
     viewProject: "View Project",
     previewAlt: (title) => `${title} preview`,
     filterLabel: "Filter projects by category",
@@ -315,6 +357,41 @@ const en: Translation = {
       { name: "Chinese", level: "Elementary proficiency" },
     ],
   },
+  faq: {
+    heading: "FAQ",
+    items: [
+      {
+        q: "What kind of roles are you open to?",
+        a: "Roles across IT and software — web development, data and AI — including ones that stretch beyond my current experience. I'm motivated to keep learning and to grow into fast-moving AI and automation work.",
+      },
+      {
+        q: "What are your strongest tools?",
+        a: "Day to day I work with .NET / C#, React, SQL Server and Power BI, and I build AI features on top of LLMs with RAG. On the research side it's Python, TensorFlow and Keras.",
+      },
+      {
+        q: "Where are you based?",
+        a: "Taoyuan City, Taiwan. I've worked on-site in Taiwan and Indonesia, and remotely for a Singapore-based company with teammates across Thailand, India and Singapore.",
+      },
+      {
+        q: "Which languages do you work in?",
+        a: "English at a professional working level, Indonesian natively, and Chinese at a basic conversational level.",
+      },
+      {
+        q: "What's the best way to reach you?",
+        a: "Email is best — cristianaruperes@gmail.com. You can also find me on LinkedIn and GitHub.",
+      },
+    ],
+  },
+  contact: {
+    heading: "Get In Touch",
+    intro:
+      "Interested in working together, or just want to talk about AI, data or web systems? I'd be glad to hear from you.",
+    emailLabel: "Email",
+    locationLabel: "Location",
+    locationValue: "Taoyuan City, Taiwan",
+    socialLabel: "Elsewhere",
+    cta: "Send me an email",
+  },
   footer: {
     rights: (year) => `© ${year} Cristian Daniel Aruperes. All rights reserved.`,
     builtWith: "Built with React, TypeScript and Tailwind CSS",
@@ -341,6 +418,7 @@ const zh: Translation = {
     education: "學歷",
     portfolio: "作品集",
     publications: "著作與證照",
+    contact: "聯絡",
   },
   sidebar: {
     name: "阿魯沛 Cristian Daniel Aruperes",
@@ -349,6 +427,10 @@ const zh: Translation = {
     github: "GitHub",
     linkedin: "LinkedIn",
     email: "電子郵件",
+  },
+  menu: {
+    open: "開啟選單",
+    close: "關閉選單",
   },
   languageSwitcher: {
     label: "語言",
@@ -454,6 +536,12 @@ const zh: Translation = {
       },
     ],
   },
+  journey: {
+    heading: "我的歷程",
+    education: "學業",
+    work: "工作",
+    now: "現在",
+  },
   education: {
     heading: "學歷",
     items: [
@@ -475,6 +563,8 @@ const zh: Translation = {
   },
   portfolio: {
     heading: "作品集",
+    featuredHeading: "精選作品",
+    viewAll: "查看所有作品",
     viewProject: "查看專案",
     previewAlt: (title) => `${title} 預覽圖`,
     filterLabel: "依類別篩選專案",
@@ -547,6 +637,41 @@ const zh: Translation = {
       { name: "中文", level: "基礎溝通能力" },
     ],
   },
+  faq: {
+    heading: "常見問題",
+    items: [
+      {
+        q: "你正在尋找什麼樣的職務？",
+        a: "資訊科技與軟體領域的各類職務 —— 包含網站開發、資料與 AI，也包含超出我目前經驗範圍的工作。我樂於持續學習，並希望在快速演進的 AI 與自動化領域中成長。",
+      },
+      {
+        q: "你最擅長的工具有哪些？",
+        a: "日常工作主要使用 .NET / C#、React、SQL Server 與 Power BI，並運用大型語言模型（LLM）與 RAG 建置 AI 功能。研究方面則以 Python、TensorFlow 與 Keras 為主。",
+      },
+      {
+        q: "你目前在哪裡？",
+        a: "台灣桃園市。我曾在台灣與印尼現場工作，也曾為新加坡的公司遠端工作，團隊成員分布於泰國、印度與新加坡。",
+      },
+      {
+        q: "你使用哪些語言溝通？",
+        a: "英文具備專業工作能力，印尼文為母語，中文則為基礎溝通能力。",
+      },
+      {
+        q: "聯絡你最好的方式是什麼？",
+        a: "電子郵件最快 —— cristianaruperes@gmail.com。也歡迎透過 LinkedIn 或 GitHub 與我聯繫。",
+      },
+    ],
+  },
+  contact: {
+    heading: "與我聯絡",
+    intro:
+      "想合作，或只是想聊聊 AI、資料與網站系統嗎？歡迎隨時與我聯繫。",
+    emailLabel: "電子郵件",
+    locationLabel: "所在地",
+    locationValue: "台灣 桃園市",
+    socialLabel: "其他平台",
+    cta: "寄信給我",
+  },
   footer: {
     rights: (year) => `© ${year} 阿魯沛 Cristian Daniel Aruperes. 版權所有。`,
     builtWith: "以 React、TypeScript 與 Tailwind CSS 打造",
@@ -573,6 +698,7 @@ const id: Translation = {
     education: "Pendidikan",
     portfolio: "Portofolio",
     publications: "Publikasi",
+    contact: "Kontak",
   },
   sidebar: {
     name: "Cristian Daniel Aruperes",
@@ -581,6 +707,10 @@ const id: Translation = {
     github: "GitHub",
     linkedin: "LinkedIn",
     email: "Email",
+  },
+  menu: {
+    open: "Buka menu",
+    close: "Tutup menu",
   },
   languageSwitcher: {
     label: "Bahasa",
@@ -686,6 +816,12 @@ const id: Translation = {
       },
     ],
   },
+  journey: {
+    heading: "Perjalanan Saya",
+    education: "Pendidikan",
+    work: "Pekerjaan",
+    now: "Sekarang",
+  },
   education: {
     heading: "Pendidikan",
     items: [
@@ -707,6 +843,8 @@ const id: Translation = {
   },
   portfolio: {
     heading: "Portofolio",
+    featuredHeading: "Karya Pilihan",
+    viewAll: "Lihat Semua Proyek",
     viewProject: "Lihat Proyek",
     previewAlt: (title) => `Pratinjau ${title}`,
     filterLabel: "Saring proyek berdasarkan kategori",
@@ -779,6 +917,41 @@ const id: Translation = {
       { name: "Inggris", level: "Kemampuan kerja profesional" },
       { name: "Mandarin", level: "Kemampuan dasar" },
     ],
+  },
+  faq: {
+    heading: "Tanya Jawab",
+    items: [
+      {
+        q: "Peran seperti apa yang Anda cari?",
+        a: "Berbagai peran di bidang IT dan software — pengembangan web, data dan AI — termasuk yang berada di luar pengalaman saya saat ini. Saya termotivasi untuk terus belajar dan berkembang di bidang AI serta automasi yang bergerak cepat.",
+      },
+      {
+        q: "Apa tools yang paling Anda kuasai?",
+        a: "Sehari-hari saya bekerja dengan .NET / C#, React, SQL Server dan Power BI, serta membangun fitur AI di atas LLM dengan RAG. Untuk riset, saya menggunakan Python, TensorFlow dan Keras.",
+      },
+      {
+        q: "Anda berdomisili di mana?",
+        a: "Taoyuan City, Taiwan. Saya pernah bekerja di kantor di Taiwan dan Indonesia, serta remote untuk perusahaan asal Singapura dengan rekan tim di Thailand, India dan Singapura.",
+      },
+      {
+        q: "Bahasa apa saja yang Anda gunakan?",
+        a: "Inggris pada tingkat kerja profesional, Indonesia sebagai bahasa ibu, dan Mandarin pada tingkat dasar.",
+      },
+      {
+        q: "Cara terbaik menghubungi Anda?",
+        a: "Lewat email — cristianaruperes@gmail.com. Saya juga bisa dihubungi melalui LinkedIn dan GitHub.",
+      },
+    ],
+  },
+  contact: {
+    heading: "Hubungi Saya",
+    intro:
+      "Tertarik bekerja sama, atau sekadar ingin berbincang soal AI, data dan sistem web? Saya senang mendengar kabar dari Anda.",
+    emailLabel: "Email",
+    locationLabel: "Lokasi",
+    locationValue: "Taoyuan City, Taiwan",
+    socialLabel: "Tautan lain",
+    cta: "Kirim email ke saya",
   },
   footer: {
     rights: (year) => `© ${year} Cristian Daniel Aruperes. Seluruh hak cipta dilindungi.`,
