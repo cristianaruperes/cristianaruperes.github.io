@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
-import { PageHeader } from "./PageHeader";
+import { SectionHeader } from "./SectionHeader";
 import { useLanguage } from "../i18n/context";
 
 export const Publications: React.FC = () => {
@@ -10,14 +10,14 @@ export const Publications: React.FC = () => {
   return (
     <section id="publications" className="px-6 py-20 sm:px-10">
       <div className="mx-auto w-full max-w-4xl">
-        <PageHeader command="cat papers/*.bib" title={t.publications.heading} />
+        <SectionHeader command="cat papers/*.bib" title={t.publications.heading} />
 
         <div className="space-y-6">
           {publications.map((pub, index) => (
             <ScrollReveal key={index} delay={0.1 * (index + 1)}>
               <div className="panel border-l-2 border-l-mint p-8 transition-colors duration-300 hover:border-mint/40">
                 <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
-                  <h2 className="min-w-[16rem] flex-1 text-xl font-bold text-white">{pub.title}</h2>
+                  <h3 className="min-w-[16rem] flex-1 text-xl font-bold text-white">{pub.title}</h3>
                   <span className="whitespace-nowrap rounded-pill border border-white/10 bg-white/5 px-4 py-1 font-mono text-small text-slate-300">
                     {pub.date}
                   </span>
@@ -32,9 +32,9 @@ export const Publications: React.FC = () => {
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <ScrollReveal delay={0.3}>
             <div className="panel h-full p-6">
-              <h2 className="mb-4 text-xl font-bold text-white">
+              <h3 className="mb-4 text-xl font-bold text-white">
                 {t.publications.certificationsHeading}
-              </h2>
+              </h3>
               {certifications.map((cert) => (
                 <div key={cert.name}>
                   <p className="font-medium leading-snug text-slate-200">{cert.name}</p>
@@ -46,9 +46,9 @@ export const Publications: React.FC = () => {
 
           <ScrollReveal delay={0.4}>
             <div className="panel h-full p-6">
-              <h2 className="mb-4 text-xl font-bold text-white">
+              <h3 className="mb-4 text-xl font-bold text-white">
                 {t.publications.languagesHeading}
-              </h2>
+              </h3>
               <ul className="space-y-3">
                 {languages.map((lang) => (
                   <li key={lang.name} className="flex justify-between gap-4">

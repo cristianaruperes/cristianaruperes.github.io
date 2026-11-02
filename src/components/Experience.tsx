@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
-import { PageHeader } from "./PageHeader";
+import { SectionHeader } from "./SectionHeader";
 import { useLanguage } from "../i18n/context";
 
 /** Tech stacks stay untranslated — they line up with t.experience.items by index. */
@@ -21,7 +21,7 @@ export const Experience: React.FC = () => {
   return (
     <section id="experience" className="px-6 py-20 sm:px-10">
       <div className="mx-auto w-full max-w-4xl">
-        <PageHeader command="git log --author=cris" title={t.experience.heading} />
+        <SectionHeader command="git log --author=cris" title={t.experience.heading} />
 
         {/* Vertical rail running the length of the timeline. */}
         <div className="relative pl-8 before:absolute before:bottom-2 before:left-[7px] before:top-2 before:w-px before:bg-gradient-to-b before:from-mint/60 before:via-white/15 before:to-transparent sm:pl-12">
@@ -34,7 +34,7 @@ export const Experience: React.FC = () => {
 
                   <div className="panel p-8 transition-colors duration-300 hover:border-mint/40">
                     <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
-                      <h2 className="text-2xl font-bold text-white">{exp.title}</h2>
+                      <h3 className="text-2xl font-bold text-white">{exp.title}</h3>
                       <span className="whitespace-nowrap rounded-pill border border-mint/30 bg-mint/10 px-4 py-1 font-mono text-small text-mintSoft">
                         {exp.period}
                       </span>

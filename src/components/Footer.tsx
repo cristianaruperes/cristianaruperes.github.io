@@ -7,9 +7,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="border-t border-white/10 bg-base/60 py-10 backdrop-blur">
       <div className="mx-auto max-w-6xl px-8 text-center">
-        <p className="font-mono text-small text-mint">{t.footer.tagline}</p>
-        <p className="mt-4 text-sm text-slate-400">{t.footer.rights(new Date().getFullYear())}</p>
-        <p className="mt-2 font-mono text-xs text-slate-600">{t.footer.builtWith}</p>
+        <p className="text-sm text-slate-400">{t.footer.rights(new Date().getFullYear())}</p>
       </div>
     </footer>
   );

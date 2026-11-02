@@ -5,9 +5,11 @@ import { CountUp } from "./CountUp";
 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
+  // The first stat floats beside the portrait; the rest fill the strip below.
+  const [headlineStat, ...otherStats] = t.hero.stats;
 
   return (
-    <section id="home" className="relative overflow-hidden px-6 py-20 sm:px-10 lg:py-28">
+    <section id="home" className="relative overflow-hidden px-6 pb-20 pt-16 sm:px-10 lg:pb-28">
       {/* Soft colour wash behind the content. */}
       <div className="blob -left-32 -top-28 h-[420px] w-[420px] animate-drift bg-mint/40" />
       <div className="blob -bottom-32 -right-24 h-[360px] w-[360px] bg-brand-react/30" />
@@ -59,27 +61,77 @@ export const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Portrait framed as an editor window. */}
-        <div className="panel mx-auto w-full max-w-sm overflow-hidden">
-          <div className="tbar">
-            <span className="tdot bg-red-400/80" />
-            <span className="tdot bg-yellow-400/80" />
-            <span className="tdot bg-green-400/80" />
-            <span className="ml-2 font-mono text-xs text-slate-500">cristian.webp</span>
+        {/* Portrait in a gradient ring, with a code window and stat badge floating over it. */}
+        <div className="relative mx-auto mt-10 w-full max-w-sm lg:mt-0">
+          <div className="relative aspect-square">
+            {/* Glow sitting behind the ring. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-6 rounded-full bg-mint/20 blur-3xl"
+            />
+
+            {/* Gradient ring — padding reveals it as a border around the disc. */}
+            <div className="relative h-full w-full rounded-full bg-gradient-to-br from-mint via-brand-react to-mint/40 p-1.5 shadow-2xl">
+              {/* The portrait is a cut-out, so the disc behind it supplies the backdrop. */}
+              <div className="h-full w-full overflow-hidden rounded-full border-4 border-deep bg-gradient-to-b from-base to-deep">
+                <img
+                  src="/cristian.webp"
+                  alt={t.hero.photoAlt}
+                  width={720}
+                  height={723}
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+            </div>
+
+            {/* Floating code window, low on the right so it never covers the face. */}
+            <div className="panel absolute -bottom-6 -right-4 w-60 overflow-hidden sm:-right-8 lg:-right-14">
+              <div className="tbar !py-2">
+                <span className="tdot bg-red-400/80" />
+                <span className="tdot bg-yellow-400/80" />
+                <span className="tdot bg-green-400/80" />
+              </div>
+              <pre className="overflow-x-auto px-4 py-3 font-mono text-xs leading-relaxed">
+                <code>
+                  <span className="text-brand-react">const</span>{" "}
+                  <span className="text-white">engineer</span>{" "}
+                  <span className="text-slate-500">= {"{"}</span>
+                  {"\n  "}
+                  <span className="text-slate-400">stack</span>
+                  <span className="text-slate-500">: [</span>
+                  <span className="text-mintSoft">"React"</span>
+                  <span className="text-slate-500">, </span>
+                  <span className="text-mintSoft">"C#"</span>
+                  <span className="text-slate-500">],</span>
+                  {"\n  "}
+                  <span className="text-slate-400">focus</span>
+                  <span className="text-slate-500">: </span>
+                  <span className="text-mintSoft">"AI & data"</span>
+                  <span className="text-slate-500">,</span>
+                  {"\n  "}
+                  <span className="text-slate-400">learning</span>
+                  <span className="text-slate-500">: </span>
+                  <span className="text-mint">∞</span>
+                  {"\n"}
+                  <span className="text-slate-500">{"}"}</span>
+                </code>
+              </pre>
+            </div>
+
+            {/* Floating headline stat — the remaining three sit in the strip below. */}
+            <div className="panel absolute -left-3 top-6 px-5 py-3 text-center sm:-left-6 lg:-left-10">
+              <p className="font-mono text-3xl font-bold text-mint">
+                <CountUp to={headlineStat.value} suffix={headlineStat.suffix} />
+              </p>
+              <p className="mt-1 text-xs text-slate-400">{headlineStat.label}</p>
+            </div>
           </div>
-          <img
-            src="/cristian.webp"
-            alt={t.hero.photoAlt}
-            width={720}
-            height={723}
-            className="w-full object-cover"
-          />
         </div>
       </div>
 
-      {/* Headline numbers. */}
-      <div className="relative z-10 mx-auto mt-20 grid max-w-6xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
-        {t.hero.stats.map((stat) => (
+      {/* Remaining numbers. */}
+      <div className="relative z-10 mx-auto mt-24 grid max-w-6xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+        {otherStats.map((stat) => (
           <div key={stat.label} className="bg-base/80 px-6 py-8 text-center backdrop-blur">
             <p className="font-mono text-4xl font-bold text-mint">
               <CountUp to={stat.value} suffix={stat.suffix} />

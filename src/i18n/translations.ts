@@ -22,6 +22,10 @@ export interface Translation {
     linkedin: string;
     email: string;
   };
+  menu: {
+    open: string;
+    close: string;
+  };
   languageSwitcher: {
     label: string;
     en: string;
@@ -66,6 +70,10 @@ export interface Translation {
   };
   portfolio: {
     heading: string;
+    /** Heading for the home page's selected-projects section. */
+    featuredHeading: string;
+    /** Label on the button linking from the home page to the full portfolio. */
+    viewAll: string;
     viewProject: string;
     previewAlt: (title: string) => string;
     filterLabel: string;
@@ -116,6 +124,10 @@ const en: Translation = {
     github: "GitHub",
     linkedin: "LinkedIn",
     email: "Email",
+  },
+  menu: {
+    open: "Open menu",
+    close: "Close menu",
   },
   languageSwitcher: {
     label: "Language",
@@ -242,6 +254,8 @@ const en: Translation = {
   },
   portfolio: {
     heading: "Portfolio",
+    featuredHeading: "Selected Work",
+    viewAll: "View All Projects",
     viewProject: "View Project",
     previewAlt: (title) => `${title} preview`,
     filterLabel: "Filter projects by category",
@@ -349,6 +363,10 @@ const zh: Translation = {
     github: "GitHub",
     linkedin: "LinkedIn",
     email: "電子郵件",
+  },
+  menu: {
+    open: "開啟選單",
+    close: "關閉選單",
   },
   languageSwitcher: {
     label: "語言",
@@ -475,6 +493,8 @@ const zh: Translation = {
   },
   portfolio: {
     heading: "作品集",
+    featuredHeading: "精選作品",
+    viewAll: "查看所有作品",
     viewProject: "查看專案",
     previewAlt: (title) => `${title} 預覽圖`,
     filterLabel: "依類別篩選專案",
@@ -581,6 +601,10 @@ const id: Translation = {
     github: "GitHub",
     linkedin: "LinkedIn",
     email: "Email",
+  },
+  menu: {
+    open: "Buka menu",
+    close: "Tutup menu",
   },
   languageSwitcher: {
     label: "Bahasa",
@@ -707,6 +731,8 @@ const id: Translation = {
   },
   portfolio: {
     heading: "Portofolio",
+    featuredHeading: "Karya Pilihan",
+    viewAll: "Lihat Semua Proyek",
     viewProject: "Lihat Proyek",
     previewAlt: (title) => `Pratinjau ${title}`,
     filterLabel: "Saring proyek berdasarkan kategori",
